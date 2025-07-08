@@ -265,7 +265,7 @@ end
 function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
-    obj["life"] = 17
+    obj["life"] = 11
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
     obj[3] = obj_char[3]
@@ -280,12 +280,12 @@ function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
     obj["animation"] = {}
     obj["animation"][0] = 0
     obj["animation"][1] = 1
-    obj["animation"][5] = 2
-    obj["animation"][9] = 3
-    obj["animation"][13] = 4
-    obj["animation"][17] = 4
+    obj["animation"][3] = 2
+    obj["animation"][6] = 3
+    obj["animation"][8] = 4
+    obj["animation"][11] = 4
     obj["animation"]["prop"] = 8
-    obj["animation"]["length"] = 17
+    obj["animation"]["length"] = 11
     obj["animation"]["loop"] = false
     obj["animation"]["fix_type"] = true
     init_frame_anim_with(obj,obj["animation"])
