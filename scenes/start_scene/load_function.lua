@@ -99,6 +99,7 @@ function order_load_start_scene_main_UI(load_order)
 
             -- main logo
             image_UI_start_scene_main_logo = love.graphics.newImage(ASSET_DATA[1][23])
+            image_UI_start_scene_press_any_key = love.graphics.newImage(ASSET_DATA[1][24])
 
         end,
         [2] = function()

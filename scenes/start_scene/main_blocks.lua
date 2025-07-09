@@ -21,7 +21,7 @@ function update_start_scene_30f_1s45f()
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
 
     -- 场景出口
-    if SCENE_TIMER >= 75 then 
+    if SCENE_TIMER >= 75 and INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
         SCENE_TIMER = 0
         -- 初始化此出口所需属性 但是目前没有
 
@@ -32,6 +32,7 @@ function update_start_scene_30f_1s45f()
         init_point_linear_anim_with(obj_UI_start_scene_console_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
         init_point_linear_anim_with(obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
         init_point_linear_anim_with(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_general_ease_in_0_0p1_opacity)
+        init_point_linear_anim_with(obj_UI_start_scene_main_press_any_key,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
 
         -- 更新 current_update_block
         current_update_block = update_start_scene_1s45f_1s50f
@@ -48,6 +49,7 @@ function update_start_scene_1s45f_1s50f()
     point_linear_animator(obj_UI_start_scene_console_dabo_trig,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
     point_linear_animator(obj_UI_start_scene_option_text,anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity)
     point_linear_animator(obj_UI_start_scene_breath_tag,anim_UI_point_linear_start_scene_general_ease_in_0_0p1_opacity)
+    point_linear_animator(obj_UI_start_scene_main_press_any_key,anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity)
 
     -- 场景出口
     if SCENE_TIMER >= 5 then 

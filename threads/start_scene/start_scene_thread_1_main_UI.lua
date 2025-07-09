@@ -37,5 +37,6 @@ image_data[22] = compress_module("asset/start_scene/option/breath_tag.dds")
 
 -- main logo
 image_data[23] = compress_module("asset/start_scene/main/main_logo.dds")
+image_data[24] = compress_module("asset/start_scene/main/PRESS_ANY_KEY.dds")
 
 love.thread.getChannel( 'image_1' ):push( image_data )

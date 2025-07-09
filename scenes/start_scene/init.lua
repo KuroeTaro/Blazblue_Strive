@@ -220,12 +220,18 @@ function load_start_scene_obj()
 
 
     -- logo 主界面
-    obj_UI_start_scene_main_logo = {325, 250, nil, 1, 1, 1, 0, 0}
+    obj_UI_start_scene_main_logo = {140, 110, nil, 1, 0.9, 0.9, 0, 0}
     obj_UI_start_scene_main_logo["FCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_start_scene_main_logo["LCT"] = {0,0,0,0,0,0,0,0}
     obj_UI_start_scene_main_logo["LCD"] = {0,0,0,0,0,0,0,0}
     obj_UI_start_scene_main_logo["state"] = "default"
 
+    -- press any key 主页面
+    obj_UI_start_scene_main_press_any_key = {450, 700, nil, 1, 0.8, 0.8, 0, 0}
+    obj_UI_start_scene_main_press_any_key["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_start_scene_main_press_any_key["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_start_scene_main_press_any_key["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_start_scene_main_press_any_key["state"] = "default"
 
     -- 背景 主界面
     obj_UI_start_scene_noise_bg = {0, 0, nil, 1, 1, 1, 0, 0}
