@@ -1,0 +1,49 @@
+Happy Chaos 	Terumi
+5p 		5a
+5k 		6drive
+cs 		5b
+fs 		5drive
+5dust 		6a
+2p 		2a
+2k 		2b
+2s 		2c
+2dust 		3c
+6p 		214c
+6k 		22ccc
+6s 		214drive
+jp		ja
+jk		jb
+js		jc
+jdust		623b(od hit5)
+j2k		j5drive
+46dust		tm311_00 tm602_09
+j46dust		jbc
+AtTheReady	hazama's hat		H
+AtTheReady 236s	tm610			6sp_S
+Fire		hazama's hat		AtTheReady_]H[/SteadyAim_]H[
+SteadyAim	tm340_04		4sp_S
+CancelAim	tm340_00		AtTheReady_sp_dust/SteadyAim_AtTheReady_4sp_dust/SteadyAim_2sp_dust
+Reload		tm340_00		
+Focus		tm340_00
+Curse		44			6sp_P
+Scapegoat	44			6sp_K
+Roll		tm110_00		4sp_K
+DeusExMachina	tm450_15*		5UA
+SuperFocus	tm611_11 tm401_21*	2UA
+
+
+Hazama		Terumi
+5D 2D 6D 4D	tm430_03		5sp_H 2sp_H 6sp_H 4sp_H
+JD J2D J6D				j5sp_H j2sp_H j6sp_H j4sp_H j8sp_h
+J4D J8D		tm431_01
+4628 ACD follow	tm431_05		sp_P sp_K sp_S sp_H
+4628 B follow	tm431_04
+623Drive	tm436_09		2sp_K
+J214B		tm313_07		jsp_S
+236236B		tm440_21		6UA
+632146DD	tm440_21		4UA
+EA		tm6c tm436_52*		Brust_OD
+
+Terumi
+2D+22CCCCC	2D			2sp_P
+6D		6D			2sp_S

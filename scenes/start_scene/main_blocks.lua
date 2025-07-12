@@ -23,6 +23,7 @@ function update_start_scene_30f_1s45f()
     -- 场景出口
     if SCENE_TIMER >= 75 and INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
         SCENE_TIMER = 0
+        play_obj_audio(audio_SFX_start_scene_confirm_4)
         -- 初始化此出口所需属性 但是目前没有
 
         -- 初始化main所需要的动画机
@@ -83,7 +84,7 @@ function update_start_scene_main()
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Left"] == "Pressing" then 
         SCENE_TIMER = 0
         -- 播放twitch音频
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_left_1)
 
         -- 轮转 option id
         if OPTION_ID == 0 then 
@@ -125,7 +126,7 @@ function update_start_scene_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Right"] == "Pressing" then 
         SCENE_TIMER = 0
         -- 播放twitch音频
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_right_1)
 
         -- 轮转 option ID
         if OPTION_ID == 4 then 
@@ -166,7 +167,7 @@ function update_start_scene_main()
     -- 场景出口 option 确认
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then 
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_confirm_1)
         local switch = {
             [0] = function()
                 SCENE_TIMER = 0
@@ -180,7 +181,7 @@ function update_start_scene_main()
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_solid_color[4] = 0
                     -- audio
-                audio_BGM_start_scene_FTR_high[1] = 1
+                audio_BGM_start_scene_NOC_high[1] = 1
 
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
@@ -190,12 +191,12 @@ function update_start_scene_main()
 
                     -- audio
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
                 )
 
                 -- 音量更新
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
 
                 -- 更新 current_update_block
                 current_update_block = update_start_scene_ease_out
@@ -212,7 +213,7 @@ function update_start_scene_main()
 
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_solid_color[4] = 0
-                audio_BGM_start_scene_FTR_high[1] = 1
+                audio_BGM_start_scene_NOC_high[1] = 1
 
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
@@ -220,11 +221,11 @@ function update_start_scene_main()
                     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
                 )
                 -- 音量更新
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
 
                 -- 更新 current_update_block
                 current_update_block = update_start_scene_ease_out
@@ -236,15 +237,12 @@ function update_start_scene_main()
 
                 -- config
 
-                -- 播放scene out to sub
-                play_obj_audio(audio_SFX_start_scene_to_sub)
-
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 0
                 obj_UI_start_scene_config_menu_dabo_trig[4] = 0
                 obj_UI_start_scene_config_menu_text[4] = 0
-                audio_BGM_start_scene_FTR_high[1] = 1
-                audio_BGM_start_scene_FTR_low[1] = 0
+                audio_BGM_start_scene_NOC_high[1] = 1
+                audio_BGM_start_scene_NOC_low[1] = 0
 
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
@@ -260,17 +258,17 @@ function update_start_scene_main()
                     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_low,
+                    audio_BGM_start_scene_NOC_low,
                     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
                 )
 
                 -- 更新音量
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
                 -- 更新 current_update_block
                 current_update_block = update_start_scene_config_ease_in
@@ -282,9 +280,6 @@ function update_start_scene_main()
                 SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = 0
 
                 -- record
-
-                -- 播放scene out to sub
-                play_obj_audio(audio_SFX_start_scene_to_sub)
 
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 0
@@ -299,8 +294,8 @@ function update_start_scene_main()
                 obj_UI_start_scene_record_num_4[4] = 0
                 obj_UI_start_scene_record_num_5[4] = 0
                 obj_UI_start_scene_record_100h_plus_time_indi[4] = 0
-                audio_BGM_start_scene_FTR_high[1] = 1
-                audio_BGM_start_scene_FTR_low[1] = 0
+                audio_BGM_start_scene_NOC_high[1] = 1
+                audio_BGM_start_scene_NOC_low[1] = 0
 
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
@@ -344,17 +339,17 @@ function update_start_scene_main()
                     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_low,
+                    audio_BGM_start_scene_NOC_low,
                     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
                 )
 
                 -- 更新音量
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
                 -- 更新 current_update_block
                 current_update_block = update_start_scene_record_ease_in
@@ -371,7 +366,7 @@ function update_start_scene_main()
 
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_solid_color[4] = 0
-                audio_BGM_start_scene_FTR_high[1] = 1
+                audio_BGM_start_scene_NOC_high[1] = 1
                 audio_SFX_start_scene_scene_out[1] = 1
 
                 -- 初始化此出口所需要的动画机
@@ -380,12 +375,12 @@ function update_start_scene_main()
                     anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_1
                 )
 
                 -- 更新音量
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
                 update_SFX_VOLUME(audio_SFX_start_scene_scene_out)
 
                 -- 更新 current_update_block
@@ -439,10 +434,10 @@ function update_start_scene_ease_out()
         anim_UI_point_linear_start_scene_general_ease_in_0_1_opacity
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_high,
+        audio_BGM_start_scene_NOC_high,
         anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_1
     )
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
 
     -- 场景出口
     if audio_SFX_start_scene_scene_out["audio"]:isPlaying() == false then
@@ -603,16 +598,16 @@ function update_start_scene_config_ease_in()
     )
 
     point_linear_animator(
-        audio_BGM_start_scene_FTR_high,
+        audio_BGM_start_scene_NOC_high,
         anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_low,
+        audio_BGM_start_scene_NOC_low,
         anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
     )
 
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
     -- 场景出口
     if SCENE_TIMER >= 5 then
@@ -642,7 +637,7 @@ function update_start_scene_config_main()
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Up"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_up_1)
         -- 更新 config dabo trig ID
         if SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID ~= 0 then
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID - 1
@@ -663,7 +658,7 @@ function update_start_scene_config_main()
 
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Down"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_down_1)
         -- 更新 config dabo trig ID
         if SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID ~= 3 then
             SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID = SUB_SCENE_CONIFG_MAIN_DABO_TRIG_ID + 1
@@ -689,7 +684,7 @@ function update_start_scene_config_main()
             [0] = function()
                 -- audio config
 
-                play_obj_audio(audio_SFX_start_scene_to_sub)
+                play_obj_audio(audio_SFX_start_scene_confirm_2)
 
                 -- current bar mark ID
                 AUDIO_BAR_MARK_ID = 0
@@ -757,7 +752,7 @@ function update_start_scene_config_main()
             [1] = function()
                 -- controller config
 
-                play_obj_audio(audio_SFX_start_scene_to_sub)
+                play_obj_audio(audio_SFX_start_scene_confirm_2)
 
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_config_controller_bar_mark_LP["state"] = "off_state"
@@ -799,7 +794,7 @@ function update_start_scene_config_main()
             [2] = function()
                 -- resolution config
 
-                play_obj_audio(audio_SFX_start_scene_to_sub)
+                play_obj_audio(audio_SFX_start_scene_confirm_2)
 
                 -- current bar mark ID
                 get_current_resolution()
@@ -845,14 +840,14 @@ function update_start_scene_config_main()
             [3] = function()
                 -- back to config main
 
-                play_obj_audio(audio_SFX_start_scene_to_main)
+                play_obj_audio(audio_SFX_start_scene_confirm_1)
 
                 -- 初始化此出口所需属性
                 obj_UI_start_scene_shutter[4] = 1
                 obj_UI_start_scene_config_menu_dabo_trig[4] = 1
                 obj_UI_start_scene_config_menu_text[4] = 1
-                audio_BGM_start_scene_FTR_high[1] = 0
-                audio_BGM_start_scene_FTR_low[1] = 1 
+                audio_BGM_start_scene_NOC_high[1] = 0
+                audio_BGM_start_scene_NOC_low[1] = 1 
     
                 -- 初始化此出口所需要的动画机
                 init_point_linear_anim_with(
@@ -869,16 +864,16 @@ function update_start_scene_config_main()
                 )
     
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_high,
+                    audio_BGM_start_scene_NOC_high,
                     anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
                 )
                 init_point_linear_anim_with(
-                    audio_BGM_start_scene_FTR_low,
+                    audio_BGM_start_scene_NOC_low,
                     anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
                 )
     
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-                update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+                update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
     
                 -- 更新 current_update_block
                 current_update_block = update_start_scene_config_ease_out
@@ -894,14 +889,14 @@ function update_start_scene_config_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
         SCENE_TIMER = 0
         -- 播放scene out to sub
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_exit_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_shutter[4] = 1
         obj_UI_start_scene_config_menu_dabo_trig[4] = 1
         obj_UI_start_scene_config_menu_text[4] = 1
-        audio_BGM_start_scene_FTR_high[1] = 0
-        audio_BGM_start_scene_FTR_low[1] = 1 
+        audio_BGM_start_scene_NOC_high[1] = 0
+        audio_BGM_start_scene_NOC_low[1] = 1 
 
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
@@ -918,16 +913,16 @@ function update_start_scene_config_main()
         )
 
         init_point_linear_anim_with(
-            audio_BGM_start_scene_FTR_high,
+            audio_BGM_start_scene_NOC_high,
             anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
         )
         init_point_linear_anim_with(
-            audio_BGM_start_scene_FTR_low,
+            audio_BGM_start_scene_NOC_low,
             anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
         )
 
-        update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-        update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+        update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+        update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
         -- 更新 current_update_block
         current_update_block = update_start_scene_config_ease_out
@@ -1029,16 +1024,16 @@ function update_start_scene_config_ease_out()
     )
 
     point_linear_animator(
-        audio_BGM_start_scene_FTR_high,
+        audio_BGM_start_scene_NOC_high,
         anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_low,
+        audio_BGM_start_scene_NOC_low,
         anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
     )
 
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
     -- 场景出口
     if SCENE_TIMER >= 5 then
@@ -1131,14 +1126,10 @@ function update_start_scene_config_audio_main()
         anim_UI_frame_start_scene_console_type_in_mark_blink_opacity
     )
 
-    if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
-        play_obj_audio(audio_SFX_start_scene_click)
-    end
-
     -- 场景出口
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Up"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_up_1)
 
         -- 改变 AUDIO_BAR_MARK_ID
         if AUDIO_BAR_MARK_ID ~= 0 then
@@ -1165,7 +1156,7 @@ function update_start_scene_config_audio_main()
 
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Down"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_down_1)
 
         -- 改变AUDIO_BAR_MARK_ID
         if AUDIO_BAR_MARK_ID ~= 1 then
@@ -1192,7 +1183,7 @@ function update_start_scene_config_audio_main()
 
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Left"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_left_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[2] = 
@@ -1246,7 +1237,7 @@ function update_start_scene_config_audio_main()
 
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Right"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_right_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[2] = 
@@ -1298,9 +1289,9 @@ function update_start_scene_config_audio_main()
             
         end
 
-    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
+    elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" then
         SCENE_TIMER = 0
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_exit_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_audio_bar_mark[4] = 1
@@ -1746,7 +1737,7 @@ function update_start_scene_config_controller_main()
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["R"]["HS"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_exit_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_controller_bar_mark_LP[4] = 0.5
@@ -1889,7 +1880,7 @@ function update_start_scene_config_resolution_main()
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Left"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_left_1)
 
         if RES_PARTTEN ~= 0 then
             RES_PARTTEN = RES_PARTTEN - 1
@@ -1912,7 +1903,7 @@ function update_start_scene_config_resolution_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Right"] == "Pressing" then
         SCENE_TIMER = 0
         
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_right_1)
 
         if RES_PARTTEN ~= 4 then
             RES_PARTTEN = RES_PARTTEN + 1
@@ -1938,7 +1929,7 @@ function update_start_scene_config_resolution_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_exit_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_config_resolution_bar_mark[4] = 1
@@ -2139,16 +2130,16 @@ function update_start_scene_record_ease_in()
     )
 
     point_linear_animator(
-        audio_BGM_start_scene_FTR_high,
+        audio_BGM_start_scene_NOC_high,
         anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_low,
+        audio_BGM_start_scene_NOC_low,
         anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
     )
 
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
     -- 场景出口
     if SCENE_TIMER >= 5 then
@@ -2185,7 +2176,7 @@ function update_start_scene_record_main()
     if INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Up"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_up_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_record_dabo_trig[2] = 
@@ -2204,7 +2195,7 @@ function update_start_scene_record_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["Down"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_click)
+        play_obj_audio(audio_SFX_start_scene_down_1)
         
         -- 初始化此出口所需属性
         obj_UI_start_scene_record_dabo_trig[2] = 
@@ -2222,7 +2213,7 @@ function update_start_scene_record_main()
     elseif INPUT_SYS_CURRENT_COMMAND_STATE["L"]["K"] == "Pressing" or INPUT_SYS_CURRENT_COMMAND_STATE["L"]["HS"] == "Pressing" then
         SCENE_TIMER = 0
 
-        play_obj_audio(audio_SFX_start_scene_to_main)
+        play_obj_audio(audio_SFX_start_scene_exit_1)
 
         -- 初始化此出口所需属性
         obj_UI_start_scene_shutter[4] = 1
@@ -2237,8 +2228,8 @@ function update_start_scene_record_main()
         obj_UI_start_scene_record_num_4[4] = 1
         obj_UI_start_scene_record_num_5[4] = 1
         obj_UI_start_scene_record_100h_plus_time_indi[4] = 1
-        audio_BGM_start_scene_FTR_high[1] = 0
-        audio_BGM_start_scene_FTR_low[1] = 1
+        audio_BGM_start_scene_NOC_high[1] = 0
+        audio_BGM_start_scene_NOC_low[1] = 1
 
         -- 初始化此出口所需要的动画机
         init_point_linear_anim_with(
@@ -2282,16 +2273,16 @@ function update_start_scene_record_main()
             anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
         )
         init_point_linear_anim_with(
-            audio_BGM_start_scene_FTR_high,
+            audio_BGM_start_scene_NOC_high,
             anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
         )
         init_point_linear_anim_with(
-            audio_BGM_start_scene_FTR_low,
+            audio_BGM_start_scene_NOC_low,
             anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
         )
 
-        update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-        update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+        update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+        update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
         -- 更新 current_update_block
         current_update_block = update_start_scene_record_ease_out
@@ -2408,16 +2399,16 @@ function update_start_scene_record_ease_out()
         anim_UI_point_linear_start_scene_general_ease_out_1_0_opacity
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_high,
+        audio_BGM_start_scene_NOC_high,
         anim_UI_point_linear_start_scene_audio_ease_in_0_1_volume
     )
     point_linear_animator(
-        audio_BGM_start_scene_FTR_low,
+        audio_BGM_start_scene_NOC_low,
         anim_UI_point_linear_start_scene_audio_ease_out_1_0_volume_0
     )
 
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_high)
-    update_BGM_VOLUME(audio_BGM_start_scene_FTR_low)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_high)
+    update_BGM_VOLUME(audio_BGM_start_scene_NOC_low)
 
     -- 场景出口
     if SCENE_TIMER >= 5 then

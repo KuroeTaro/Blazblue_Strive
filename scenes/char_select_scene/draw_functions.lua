@@ -269,89 +269,60 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
 end
 
 function draw_char_select_scene_char_select_LR(id)
+    local obj_UI_char_select_scene_char_select = nil
+    local obj_UI_char_select_scene_char_select_text = nil
+    local obj_UI_char_select_scene_char_select_char = nil
+    local image_UI_char_select_scene_char_select_alpha = nil
     if id == 1 then
-        local x = draw_resolution_correction(obj_UI_char_select_scene_char_select_left[1])
-        local y = draw_resolution_correction(obj_UI_char_select_scene_char_select_left[2])
-        local sx = draw_resolution_correction(obj_UI_char_select_scene_char_select_left[5])
-        local sy = draw_resolution_correction(obj_UI_char_select_scene_char_select_left[6])
-        local f = obj_UI_char_select_scene_char_select_left[8]
-        local opacity = obj_UI_char_select_scene_char_select_left[4]
-        local w = 1650
-        local h = 455
-
-        if opacity == 0 then
-            return
-        end
-
-        CANVAS= love.graphics.newCanvas(w,h)
-        love.graphics.setCanvas(CANVAS)
-        love.graphics.clear(24/255, 30/255, 39/255, 1)
-        love.graphics.draw(
-            image_table_UI_char_select_scene_char_select_text_left[f],
-            obj_UI_char_select_scene_char_select_left_text[1],
-            obj_UI_char_select_scene_char_select_left_text[2],
-            obj_UI_char_select_scene_char_select_left_text[7],
-            obj_UI_char_select_scene_char_select_left_text[3],
-            obj_UI_char_select_scene_char_select_left_text[4]
-        )
-        love.graphics.draw(
-            image_table_UI_char_select_scene_char_select_char[f],
-            obj_UI_char_select_scene_char_select_left_char[1],
-            obj_UI_char_select_scene_char_select_left_char[2],
-            obj_UI_char_select_scene_char_select_left_char[7],
-            obj_UI_char_select_scene_char_select_left_char[3],
-            obj_UI_char_select_scene_char_select_left_char[4]
-        )
-        love.graphics.setBlendMode('multiply', 'premultiplied')
-        love.graphics.draw(image_UI_char_select_scene_char_select_left_alpha,0,0,0,1,1)
-        love.graphics.setBlendMode('alpha', 'alphamultiply')
-        love.graphics.setCanvas()
-        
-        love.graphics.setColor(1, 1, 1, opacity)
-        love.graphics.draw(CANVAS,x,y,0,sx,sy)
-        love.graphics.setColor(1, 1, 1, 1)
-
-    elseif id == 2 then
-        local x = draw_resolution_correction(obj_UI_char_select_scene_char_select_right[1])
-        local y = draw_resolution_correction(obj_UI_char_select_scene_char_select_right[2])
-        local sx = draw_resolution_correction(obj_UI_char_select_scene_char_select_right[5])
-        local sy = draw_resolution_correction(obj_UI_char_select_scene_char_select_right[6])
-        local f = obj_UI_char_select_scene_char_select_right[8]
-        local opacity = obj_UI_char_select_scene_char_select_right[4]
-        local w = 1650
-        local h = 455
-
-        if opacity == 0 then
-            return
-        end
-
-        CANVAS= love.graphics.newCanvas(w,h)
-        love.graphics.setCanvas(CANVAS)
-        love.graphics.clear(24/255, 30/255, 39/255, 1)
-        love.graphics.draw(
-            image_table_UI_char_select_scene_char_select_text_right[f],
-            obj_UI_char_select_scene_char_select_right_text[1],
-            obj_UI_char_select_scene_char_select_right_text[2],
-            obj_UI_char_select_scene_char_select_right_text[7],
-            obj_UI_char_select_scene_char_select_right_text[3],
-            obj_UI_char_select_scene_char_select_right_text[4]
-        )
-        love.graphics.draw(
-            image_table_UI_char_select_scene_char_select_char[f],
-            obj_UI_char_select_scene_char_select_right_char[1],
-            obj_UI_char_select_scene_char_select_right_char[2],
-            obj_UI_char_select_scene_char_select_right_char[7],
-            obj_UI_char_select_scene_char_select_right_char[3],
-            obj_UI_char_select_scene_char_select_right_char[4]
-        )
-        love.graphics.setBlendMode('multiply', 'premultiplied')
-        love.graphics.draw(image_UI_char_select_scene_char_select_right_alpha,0,0,0,1,1)
-        love.graphics.setBlendMode('alpha', 'alphamultiply')
-        love.graphics.setCanvas()
-        
-        love.graphics.setColor(1, 1, 1, opacity)
-        love.graphics.draw(CANVAS,x,y,0,sx,sy)
-        love.graphics.setColor(1, 1, 1, 1)
-        
+        obj_UI_char_select_scene_char_select = obj_UI_char_select_scene_char_select_left
+        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_left_text
+        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_left_char
+        image_UI_char_select_scene_char_select_alpha = image_UI_char_select_scene_char_select_left_alpha
+    else
+        obj_UI_char_select_scene_char_select = obj_UI_char_select_scene_char_select_right
+        obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_right_text
+        obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_right_char
+        image_UI_char_select_scene_char_select_alpha = image_UI_char_select_scene_char_select_right_alpha
     end
+    
+    local x = draw_resolution_correction(obj_UI_char_select_scene_char_select[1])
+    local y = draw_resolution_correction(obj_UI_char_select_scene_char_select[2])
+    local sx = draw_resolution_correction(obj_UI_char_select_scene_char_select[5])
+    local sy = draw_resolution_correction(obj_UI_char_select_scene_char_select[6])
+    local f = obj_UI_char_select_scene_char_select[8]
+    local opacity = obj_UI_char_select_scene_char_select[4]
+    local w = 1650
+    local h = 455
+
+    if opacity == 0 then
+        return
+    end
+
+    CANVAS= love.graphics.newCanvas(w,h)
+    love.graphics.setCanvas(CANVAS)
+    love.graphics.clear(24/255, 30/255, 39/255, 1)
+    love.graphics.draw(
+        image_table_UI_char_select_scene_char_select_char_txt[f],
+        obj_UI_char_select_scene_char_select_text[1],
+        obj_UI_char_select_scene_char_select_text[2],
+        obj_UI_char_select_scene_char_select_text[7],
+        obj_UI_char_select_scene_char_select_text[3],
+        obj_UI_char_select_scene_char_select_text[4]
+    )
+    love.graphics.draw(
+        image_table_UI_char_select_scene_char_select_char[f],
+        obj_UI_char_select_scene_char_select_char[1],
+        obj_UI_char_select_scene_char_select_char[2],
+        obj_UI_char_select_scene_char_select_char[7],
+        obj_UI_char_select_scene_char_select_char[3],
+        obj_UI_char_select_scene_char_select_char[4]
+    )
+    love.graphics.setBlendMode('multiply', 'premultiplied')
+    love.graphics.draw(image_UI_char_select_scene_char_select_alpha,0,0,0,1,1)
+    love.graphics.setBlendMode('alpha', 'alphamultiply')
+    love.graphics.setCanvas()
+    
+    love.graphics.setColor(1, 1, 1, opacity)
+    love.graphics.draw(CANVAS,x,y,0,sx,sy)
+    love.graphics.setColor(1, 1, 1, 1)
 end

@@ -3,11 +3,7 @@ function update_char_select_scene_ease_in_0f_36f()
     point_linear_animator(obj_UI_char_select_scene_black_solid,anim_UI_point_linear_char_select_scene_black_solid_ease_out_opacity)
     state_machine_UI_char_select_scene_movie_cover_loop(obj_UI_char_select_scene_movie_cover)
     state_machine_UI_char_select_scene_start_0f_110f(obj_UI_char_select_scene_start_0f_110f)
-
-    if SCENE_TIMER == 20 then
-        play_obj_audio(audio_SFX_char_select_scene_start_SFX_2)
-    end
-
+    
     -- 场景出口
     if SCENE_TIMER >= 36 then 
         -- 初始化此出口所需属性
@@ -582,11 +578,11 @@ function update_char_select_scene_main()
             anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
         )
         init_point_linear_anim_with(
-            audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit,
+            audio_BGM_char_select_scene_moonlight_re_edit,
             anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
         )
 
-        update_BGM_VOLUME(audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit)
+        update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
 
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
@@ -633,11 +629,11 @@ function update_char_select_scene_train_dummy_select()
             anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
         )
         init_point_linear_anim_with(
-            audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit,
+            audio_BGM_char_select_scene_moonlight_re_edit,
             anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
         )
 
-        update_BGM_VOLUME(audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit)
+        update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
 
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_ease_out
@@ -682,7 +678,7 @@ function update_char_select_scene_train_dummy_select()
             anim_UI_point_linear_char_select_scene_control_method_bar_mark_unlocking_ease_in_opacity_0_1
         )
 
-        play_obj_audio(audio_SFX_char_select_scene_to_main_L)
+        play_obj_audio(audio_SFX_char_select_scene_exit_2)
 
         -- 更新 current_update_block
         current_update_block = update_char_select_scene_main
@@ -703,11 +699,11 @@ function update_char_select_scene_ease_out()
         anim_UI_point_linear_char_select_scene_black_solid_scene_ease_out
     )
     point_linear_animator(
-        audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit,
+        audio_BGM_char_select_scene_moonlight_re_edit,
         anim_UI_point_linear_char_select_scene_audio_ease_out_1_0_volume_1
     )
     
-    update_BGM_VOLUME(audio_BGM_char_select_scene_psychedelic_Parade_Re_Edit)
+    update_BGM_VOLUME(audio_BGM_char_select_scene_moonlight_re_edit)
 
     if audio_SFX_char_select_scene_ease_out["audio"]:isPlaying() == false then
         -- 初始化此出口所需属性

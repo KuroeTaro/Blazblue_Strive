@@ -7,14 +7,14 @@
 -- order_size_table 对应 每个具体的 load_function的 order最大值
 function load_game_scene_prep()
     local char_id_to_name = {
-        "ERIKAWK3",
-        "KTC",
-        "ANRI",
-        "IZY",
-        "SZO",
-        "CKG",
-        "SHINRA",
-        "SRT"
+        "PLT",
+        "AZR",
+        "SSN",
+        "TRM",
+        "RGN",
+        "SRK",
+        "KGR",
+        "TGR"
     }
     local LP_name = char_id_to_name[CHAR_SELECT_LR["L"]]
     local RP_name = char_id_to_name[CHAR_SELECT_LR["R"]]
