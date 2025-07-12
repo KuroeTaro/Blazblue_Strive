@@ -197,6 +197,9 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["block_VFX_insert_function"] = nil
     obj_char_game_scene_char_LP["block_VFX_insert_function_argument"] = nil
     obj_char_game_scene_char_LP["block_SFX"] = nil
+
+    obj_char_game_scene_char_LP["oroboros_bite_pos"] = {0,0}
+    obj_char_game_scene_char_LP["hazama_hat_aim_pos"] = {0,0}
     
     -- draw_correction
     obj_char_game_scene_char_LP[8] = 0

@@ -3,6 +3,10 @@ function update_start_scene_ease_in()
     point_linear_animator(obj_UI_start_scene_solid_color,anim_UI_point_linear_start_scene_solid_ease_in_opacity)
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
 
+    if SCENE_TIMER == 10 then
+        play_obj_audio(audio_SFX_start_scene_blazblue_click_echo)
+    end
+
     -- 场景出口
     if SCENE_TIMER >= 30 then 
         SCENE_TIMER = 0

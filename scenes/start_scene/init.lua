@@ -782,6 +782,5 @@ function preset_start_scene()
     state_machine_UI_start_scene_noise_BG_static_loop(obj_UI_start_scene_noise_bg)
     play_obj_audio(audio_BGM_start_scene_NOC_high)
     play_obj_audio(audio_BGM_start_scene_NOC_low)
-    play_obj_audio(audio_SFX_start_scene_blazblue_click_echo)
     
 end

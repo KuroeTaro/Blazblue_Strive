@@ -19,7 +19,8 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_ground = {-2400, 320, 200, 1, 1, 1, 0, 0}
     obj_stage_game_scene_stair = {-2400, 175, 300, 1, 1, 1, 0, 0}
     obj_stage_game_scene_glow = {0, 0, -800, 1, 1, 1, 0, 0}
-    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-1200}
+    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-1200,500}
+    obj_stage_game_scene_tile_map = {-4050, -1740, 500, 1, 1, 1, 0, 0}
 
     obj_stage_game_scene_shadow_anchor = {0, 515, 800}
 
@@ -45,6 +46,7 @@ function order_load_game_scene_stage(load_order)
             image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[4][1])
             image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[4][2])
             image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[4][3])
+            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[4][4])
         end,
     }
     local this_function = switch[load_order]
@@ -133,8 +135,16 @@ function draw_game_scene_stage_static()
 
     local camera = obj_stage_game_scene_camera
 
-    local obj = obj_stage_game_scene_stair
-    local sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
+    local obj = obj_stage_game_scene_tile_map
+    local sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_tile_map)
+    sprite_batch:clear()
+    sprite_batch:add(0, 0)
+    sprite_batch:add(2700, 0)
+    sprite_batch:add(5400, 0)
+    draw_3d_image(camera,obj,sprite_batch)
+
+    obj = obj_stage_game_scene_stair
+    sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
     sprite_batch:clear()
     sprite_batch:add(0, 0)
     sprite_batch:add(1600, 0)
@@ -157,7 +167,7 @@ function draw_game_scene_stage_glow()
 
     local x = obj["glow_3d_pos"][1]
     local y = obj["glow_3d_pos"][2]
-    local z = 800
+    local z = obj["glow_3d_pos"][3]
 
     local camera_x = camera["enclose_percentage"]*camera["enclose_position_offset"][1] + (1-camera["enclose_percentage"])*camera[1]
     local camera_y = camera["enclose_percentage"]*camera["enclose_position_offset"][2] + (1-camera["enclose_percentage"])*camera[2]
@@ -214,6 +224,7 @@ function draw_game_scene_stage_glow()
 
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1, 1, 1, 0.8)
+    love.graphics.draw(CANVAS_ALPHA_COMP)
     love.graphics.draw(CANVAS_ALPHA_COMP)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setBlendMode("alpha")
