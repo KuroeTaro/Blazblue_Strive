@@ -28,30 +28,16 @@ function draw_game_scene_main()
     -- 绘制 overlay
     draw_game_scene_char_LP_black_overlay()
     draw_game_scene_char_RP_black_overlay()
-
-    -- 绘制角色本体
-    local non_UI_canvas = love.graphics.newCanvas(
-        love.graphics.getWidth(),
-        love.graphics.getHeight()
-    )
-
-    love.graphics.setCanvas(non_UI_canvas)
-    draw_game_scene_char_LP() -- IZAYA 2 draw calls 3
-    draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
-    -- love.graphics.setColor(1,1,1,0.5)
-    -- draw_game_scene_char_LP()
-    -- love.graphics.setColor(1,1,1,1)
+    
+    -- 绘制角色
+    if VISUAL_FRONT == "L" then
+        draw_game_scene_char_LP() -- IZAYA 2 draw calls 3
+        draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
+    elseif VISUAL_FRONT == "R" then
+        draw_game_scene_char_RP() -- IZAYA 2 draw calls 3
+        draw_game_scene_char_LP() -- IZAYA 2 draw calls 4
+    end
     love.graphics.setCanvas()
-
-    -- shader_game_scene_gaussian_blur:send("Directions", 16)
-    -- shader_game_scene_gaussian_blur:send("Quality", 5)
-    -- shader_game_scene_gaussian_blur:send("Size", 2)
-    -- shader_game_scene_gaussian_blur:send("resolution", {love.graphics.getWidth(), love.graphics.getHeight()})
-    -- love.graphics.setShader(shader_game_scene_gaussian_blur)
-    -- love.graphics.draw(non_UI_canvas) -- 1 draw call 5
-    -- love.graphics.setShader()
-
-    love.graphics.draw(non_UI_canvas) -- 1 draw call 5
 
     -- 绘制上帝光
     draw_game_scene_stage_glow() -- 5 draw calls 10

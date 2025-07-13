@@ -114,6 +114,8 @@ function love.load()
 	NETWORK_MATCH_SIDE = "L"
 	NETWORK_OTHER_SIDE = "R"
 
+	VISUAL_FRONT = "L"
+
 	TRAINING_MODE_CONFIG = {}
 	TRAINING_MODE_CONFIG["LP_character_pos"] = -320 -- -1600 -> 1600
 	TRAINING_MODE_CONFIG["RP_character_pos"] = 320
