@@ -209,16 +209,16 @@ function load_game_scene_anim_char_TRM_stand_idle(obj_char)
 
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {90,520}
+        obj_char["anchor_pos"] = {225,520}
 
     end
-    for i = 1,16 do
+    for i = 1,7 do
         res[i*7] = function()
             -- draw
             obj_char[8] = i
         end
     end
-    res[17*7] = function()
+    res[8*7] = function()
         -- draw
         obj_char["f"] = -1
         obj_char[8] = 0
@@ -3852,7 +3852,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             ,{249.0625,491.1875}
         }
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_ver0_blast
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,40,-590,0.5,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,40,-590,0.8,0.75,0.75,0}
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_ver0_blast
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,-2,-855,1,0.9,0.9,0}
         obj_char["counter_SFX"] = nil

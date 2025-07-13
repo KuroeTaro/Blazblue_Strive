@@ -203,11 +203,11 @@ function load_game_scene_obj_char_RP()
     
     -- draw_correction
     obj_char_game_scene_char_RP[8] = 0
-    obj_char_game_scene_char_RP["anchor_pos"] = {90,520}
+    obj_char_game_scene_char_RP["anchor_pos"] = {225,520}
     obj_char_game_scene_char_RP["contrast"] = 1
     obj_char_game_scene_char_RP["brightness"] = 0
     obj_char_game_scene_char_RP["brightness_const"] = 0
-    obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0.2
+    obj_char_game_scene_char_RP["brightness_overdrive_const"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_x"] = 0
     obj_char_game_scene_char_RP["hurtstop_wiggle_y"] = 0
     obj_char_game_scene_char_RP["current_hurtstop_wiggle_x_animation"] = nil

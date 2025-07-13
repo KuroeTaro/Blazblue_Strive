@@ -19,11 +19,25 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_ground = {-2400, 320, 200, 1, 1, 1, 0, 0}
     obj_stage_game_scene_stair = {-2400, 175, 300, 1, 1, 1, 0, 0}
     obj_stage_game_scene_glow = {0, 0, -800, 1, 1, 1, 0, 0}
-    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-1200,500}
-    obj_stage_game_scene_tile_map = {-4050, -1740, 500, 1, 1, 1, 0, 0}
+    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2000,800}
+    obj_stage_game_scene_tile_map = {-3600, -1535, 800, 1, 1, 1, 0, 0}
 
     obj_stage_game_scene_shadow_anchor = {0, 515, 800}
 
+    -- adjust_character_color
+    obj_char_game_scene_char_LP["brightness"] = -0.05
+    obj_char_game_scene_char_LP["brightness_const"] = -0.05
+    obj_char_game_scene_char_LP["brightness_overdrive_const"] = 0.15
+    obj_char_game_scene_char_LP["contrast"] = 0.8
+    obj_char_game_scene_char_RP["brightness"] = -0.05
+    obj_char_game_scene_char_RP["brightness_const"] = -0.05
+    obj_char_game_scene_char_RP["contrast"] = 0.8
+    if 	CHAR_SELECT_LR["L"] == 	CHAR_SELECT_LR["R"] then
+        obj_char_game_scene_char_RP["brightness"] = -0.5
+        obj_char_game_scene_char_RP["brightness_const"] = -0.5
+        obj_char_game_scene_char_RP["brightness_overdrive_const"] = -0.3
+        obj_char_game_scene_char_RP["contrast"] = 1
+    end
 end
 
 function load_game_scene_anim_stage()
@@ -136,12 +150,7 @@ function draw_game_scene_stage_static()
     local camera = obj_stage_game_scene_camera
 
     local obj = obj_stage_game_scene_tile_map
-    local sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_tile_map)
-    sprite_batch:clear()
-    sprite_batch:add(0, 0)
-    sprite_batch:add(2700, 0)
-    sprite_batch:add(5400, 0)
-    draw_3d_image(camera,obj,sprite_batch)
+    draw_3d_image(camera,obj,image_stage_game_scene_tile_map)
 
     obj = obj_stage_game_scene_stair
     sprite_batch = love.graphics.newSpriteBatch(image_stage_game_scene_stair)
@@ -223,8 +232,7 @@ function draw_game_scene_stage_glow()
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
-    love.graphics.setColor(1, 1, 1, 0.8)
-    love.graphics.draw(CANVAS_ALPHA_COMP)
+    love.graphics.setColor(1, 1, 1, 0.65)
     love.graphics.draw(CANVAS_ALPHA_COMP)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setBlendMode("alpha")
