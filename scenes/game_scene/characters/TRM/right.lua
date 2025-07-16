@@ -2,7 +2,7 @@
 -- ASSET_DATA[3] -> ASSET_DATA[3]
 -- "R" -> "R"
 -- obj_char_game_scene_char_RP = {0, 0, 0, 1, -1, 1, 0, 0} -> obj_char_game_scene_char_RP = {0, 0, 0, 1, -1, 1, 0, 0}
--- obj_char_game_scene_char_RP["x"] = -320 -> obj_char_game_scene_char_RP["x"] = 320
+-- obj_char_game_scene_char_RP["x"] = 320 -> obj_char_game_scene_char_RP["x"] = 320
 
 function load_game_scene_obj_char_RP()
     -- x y z opacity sx sy r f
@@ -563,7 +563,7 @@ function draw_game_scene_char_RP()
 end
 
 function draw_game_scene_char_RP_shadow()
-
+    
 end
 
 function draw_game_scene_char_RP_hurtbox()
