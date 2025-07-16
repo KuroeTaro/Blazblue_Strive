@@ -27,7 +27,7 @@ if (comp && comp instanceof CompItem) {
                 var vertices = path.vertices; // 顶点位置数组
 
                 // 设置文件路径
-                var filePath = "F:/LOVE/DRRR_refactoring/shape_points.txt"; // 将文件保存到桌面
+                var filePath = "F:/LOVE/Blazblue_Strive/shape_points.txt"; // 将文件保存到桌面
                 var file = new File(filePath);
 
                 // 打开文件准备写入

@@ -22,8 +22,6 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2000,800}
     obj_stage_game_scene_tile_map = {-3600, -1535, 800, 1, 1, 1, 0, 0}
 
-    obj_stage_game_scene_shadow_anchor = {0, 515, 800}
-
     -- adjust_character_color
     obj_char_game_scene_char_LP["brightness"] = -0.05
     obj_char_game_scene_char_LP["brightness_const"] = -0.05
@@ -192,12 +190,12 @@ function draw_game_scene_stage_glow()
         scale * (y - camera_y) + draw_resolution_correction(450)
     }
 
-    CANVAS = love.graphics.newCanvas(width,height)
-    CANVAS_RADIAL_BLUR = love.graphics.newCanvas(width,height)
-    CANVAS_ALPHA_COMP = love.graphics.newCanvas(width,height)
-    CANVAS_ALPHA_ONLY = love.graphics.newCanvas(width,height)
+    local glow_canvas = love.graphics.newCanvas(width,height)
+    local radial_blur_canvas = love.graphics.newCanvas(width,height)
+    local alpha_comp_canvas = love.graphics.newCanvas(width,height)
+    local alpha_only_canvas = love.graphics.newCanvas(width,height)
 
-    love.graphics.setCanvas(CANVAS_ALPHA_ONLY)
+    love.graphics.setCanvas(alpha_only_canvas)
     love.graphics.rectangle("fill", 0, 0, width, height/2)
     love.graphics.draw(
         image_stage_game_scene_stage_liner_fade_alpha,
@@ -207,7 +205,7 @@ function draw_game_scene_stage_glow()
     )
     love.graphics.setCanvas()
 
-    love.graphics.setCanvas(CANVAS)
+    love.graphics.setCanvas(glow_canvas)
     love.graphics.setShader(shader_game_scene_fractal_noise)
     shader_game_scene_fractal_noise:send("time", love.timer.getTime())
     shader_game_scene_fractal_noise:send("input_x", 0)
@@ -215,25 +213,25 @@ function draw_game_scene_stage_glow()
     love.graphics.setShader()
     love.graphics.setCanvas()
 
-    love.graphics.setCanvas(CANVAS_RADIAL_BLUR)
+    love.graphics.setCanvas(radial_blur_canvas)
     love.graphics.setShader(shader_game_scene_radial_blur)
     shader_game_scene_radial_blur:send("start_coods", cood_res)
     shader_game_scene_radial_blur:send("input_screen_coords", {width, height})
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(CANVAS, 0, 0)
+    love.graphics.draw(glow_canvas, 0, 0)
     love.graphics.setShader()
     love.graphics.setCanvas()
 
-    love.graphics.setCanvas(CANVAS_ALPHA_COMP)
-    love.graphics.draw(CANVAS_RADIAL_BLUR)
+    love.graphics.setCanvas(alpha_comp_canvas)
+    love.graphics.draw(radial_blur_canvas)
     love.graphics.setBlendMode('multiply', 'premultiplied')
-    love.graphics.draw(CANVAS_ALPHA_ONLY)
+    love.graphics.draw(alpha_only_canvas)
     love.graphics.setBlendMode('alpha', 'alphamultiply')
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
     love.graphics.setColor(1, 1, 1, 0.65)
-    love.graphics.draw(CANVAS_ALPHA_COMP)
+    love.graphics.draw(alpha_comp_canvas)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setBlendMode("alpha")
 

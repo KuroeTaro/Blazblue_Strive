@@ -24,7 +24,8 @@ image_data["stand_idle_sprite_batch"] = compress_module("asset/game_scene/charac
 
 image_data["6_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6.dds")
 image_data["4_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4.dds")
-image_data["5_stop_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5_stop.dds")
+image_data["6_walk_stop_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk_stop.dds")
+image_data["4_walk_stop_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk_stop.dds")
 
 
 image_data["5P_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5P.dds")

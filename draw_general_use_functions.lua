@@ -168,7 +168,6 @@ function draw_2d_image_sprite_batch(obj,image_sprite_sheet,quad_name)
     image_sprite_sheet["sprite_batch"]:setColor(1, 1, 1, 1)
 
 end
-
 function draw_3d_image_sprite_batch(camera,obj,image_sprite_sheet,quad_name)
     local z = obj[3]
     local sx = obj[5]

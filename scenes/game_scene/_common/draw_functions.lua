@@ -6,30 +6,20 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_logic_graphic_pos_sync()
     draw_game_scene_char_RP_logic_graphic_pos_sync()
 
-    -- 绘制角色阴影
-    local shadow_cavans = love.graphics.newCanvas(
-        love.graphics.getWidth(),
-        love.graphics.getHeight(),
-        {
-            msaa = 8
-        }
-    )
-    love.graphics.setCanvas(shadow_cavans)
-    draw_game_scene_char_LP_shadow()
-    draw_game_scene_char_RP_shadow()
-    love.graphics.setCanvas()
-
-    shader_game_scene_character_blur:send("radius", 0.25 / 1000.0) -- 模糊强度，基于画布分辨率
-    shader_game_scene_character_blur:send("alpha", 0.5) -- 透明度
-    love.graphics.setShader(shader_game_scene_character_blur)
-    love.graphics.draw(shadow_cavans)
-    love.graphics.setShader()
-
     -- 绘制 overlay
     draw_game_scene_char_LP_black_overlay()
     draw_game_scene_char_RP_black_overlay()
-    
+
+    -- 绘制背侧VFX
+    draw_game_scene_char_LP_VFX_back()
+    draw_game_scene_char_RP_VFX_back()
+
     -- 绘制角色
+    local character_canvas = love.graphics.newCanvas(
+        love.graphics.getWidth(),
+        love.graphics.getHeight()
+    )
+    love.graphics.setCanvas(character_canvas)
     if VISUAL_FRONT == "L" then
         draw_game_scene_char_LP() -- IZAYA 2 draw calls 3
         draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
@@ -38,6 +28,7 @@ function draw_game_scene_main()
         draw_game_scene_char_LP() -- IZAYA 2 draw calls 4
     end
     love.graphics.setCanvas()
+    love.graphics.draw(character_canvas)
 
     -- 绘制上帝光
     draw_game_scene_stage_glow() -- 5 draw calls 10
@@ -198,13 +189,10 @@ function draw_game_scene_main()
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
-    draw_game_scene_char_LP_VFX_back()
-    draw_game_scene_char_RP_VFX_back()
-
     -- 透过上帝光和HUD
-    -- love.graphics.setColor(1,1,1,0.5)
-    -- love.graphics.draw(non_UI_canvas) -- 1 draw call 13
-    -- love.graphics.setColor(1,1,1,1)
+    love.graphics.setColor(1,1,1,0.5)
+    love.graphics.draw(character_canvas) -- 1 draw call 13
+    love.graphics.setColor(1,1,1,1)
 
     draw_game_scene_char_LP_VFX_HUD()
     draw_game_scene_char_RP_VFX_HUD()

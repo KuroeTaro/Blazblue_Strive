@@ -14,9 +14,9 @@ function load_game_scene_common_anim()
     
 end
 
-function load_game_scene_hurtbox_shadowbox_data()
-    load_game_scene_hurtbox_shadowbox_data_LP()
-    load_game_scene_hurtbox_shadowbox_data_RP()
+function load_game_scene_hurtbox_data()
+    load_game_scene_hurtbox_data_LP()
+    load_game_scene_hurtbox_data_RP()
     
 end
 
@@ -52,11 +52,6 @@ function load_game_scene_common_shader()
     shader_game_scene_character_blur = love.graphics.newShader("shaders/character_blur.glsl")
     shader_game_scene_character_blur:send("radius", 1.0 / 1000.0) -- 模糊强度，基于画布分辨率
     shader_game_scene_character_blur:send("alpha", 0.5) -- 透明度
-    
-    CANVAS = love.graphics.newCanvas(1600,900)
-    CANVAS_RADIAL_BLUR = love.graphics.newCanvas(1600,900)
-    CANVAS_ALPHA_COMP = love.graphics.newCanvas(1600,900)
-    CANVAS_ALPHA_ONLY = love.graphics.newCanvas(1600,900)
 
 end
 
