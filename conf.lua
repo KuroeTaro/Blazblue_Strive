@@ -15,11 +15,11 @@ function love.conf(t)
     -- t.window.height = 900
     t.window.title = "Blazblue_Strive.ver.1/8.002"
     -- t.window.msaa = 4  -- 设置采样级别（4x 或 8x）
-    t.window.vsync = 1
+    t.window.vsync = 0
     t.modules.physics = false 
     t.modules.touch = false 
     t.modules.video = false
     t.modules.math = false
     t.modules.mouse = false
 
-end
+end 
