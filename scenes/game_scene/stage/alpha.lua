@@ -196,7 +196,7 @@ function draw_game_scene_stage_glow()
     local alpha_only_canvas = love.graphics.newCanvas(width,height)
 
     love.graphics.setCanvas(alpha_only_canvas)
-    love.graphics.rectangle("fill", 0, 0, width, height/3)
+    love.graphics.rectangle("fill", 0, 0, width, height/2)
     love.graphics.draw(
         image_stage_game_scene_stage_liner_fade_alpha,
         0,-camera_y,0,

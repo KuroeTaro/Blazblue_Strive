@@ -4,7 +4,7 @@ const int nsamples = 100;
 vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords){
     screen_coords = input_screen_coords;
     vec2 center = start_coods.xy / screen_coords.xy;
-    float blurStart = 1;
+    float blurStart = 0.5;
     float blurWidth = 0.5;
 
     vec2 uv = texture_coords.xy;
