@@ -41,14 +41,23 @@ end
 
 function load_game_scene_common_shader()
     shader_game_scene_fractal_noise = love.graphics.newShader("shaders/game_fractal_noise.glsl")
+
     shader_game_scene_radial_blur = love.graphics.newShader("shaders/radial_blur.glsl")
+
+    shader_game_scene_shadow_radial_blur = love.graphics.newShader("shaders/shadow_radial_blur.glsl")
+    shader_game_scene_shadow_radial_blur:send("blur_start", 0.5)
+    shader_game_scene_shadow_radial_blur:send("blur_width", 0.5)
+
     shader_game_scene_brightness_contrast = love.graphics.newShader("shaders/brightness_contrast.glsl")
+
     shader_game_scene_bc7_alpha_fix = love.graphics.newShader("shaders/bc7_alpha_fix.glsl")
+
     shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl")
     shader_game_scene_gaussian_blur:send("Directions", 16)
     shader_game_scene_gaussian_blur:send("Quality", 5)
     shader_game_scene_gaussian_blur:send("Size", 8)
     shader_game_scene_gaussian_blur:send("resolution", {love.graphics.getWidth(), love.graphics.getHeight()})
+
     shader_game_scene_character_blur = love.graphics.newShader("shaders/character_blur.glsl")
     shader_game_scene_character_blur:send("radius", 1.0 / 1000.0) -- 模糊强度，基于画布分辨率
     shader_game_scene_character_blur:send("alpha", 0.5) -- 透明度

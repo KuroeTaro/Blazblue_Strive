@@ -6,6 +6,9 @@ function draw_game_scene_main()
     draw_game_scene_char_LP_logic_graphic_pos_sync()
     draw_game_scene_char_RP_logic_graphic_pos_sync()
 
+    draw_game_scene_char_LP_shadow()
+    draw_game_scene_char_RP_shadow()
+
     -- 绘制 overlay
     draw_game_scene_char_LP_black_overlay()
     draw_game_scene_char_RP_black_overlay()

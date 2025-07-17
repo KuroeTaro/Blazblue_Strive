@@ -359,13 +359,16 @@ function state_machine_char_game_scene_char_LP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
             if obj_char["f"] >= obj_char["current_animation_length"] then
-                if obj_char["height_state"] == "stand" then
-                    -- to idle
-                    obj_char["current_animation"] = anim_char_LP_stand_idle
+                obj_char["current_animation"] = anim_char_LP_stand_idle
+                if obj_char["sprite_sheet_state"] == "6_walk_stop" then
                     init_character_anim_with(obj_char,obj_char["current_animation"])
-                    obj_char["state"] = "stand_idle"
-                    state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
+                elseif obj_char["sprite_sheet_state"] == "4_walk_stop" then
+                    init_character_anim_with(obj_char,obj_char["current_animation"])
+                    obj_char["f"] = 20
+                    character_animator(obj_char,obj_char["current_animation"])
                 end
+                obj_char["state"] = "stand_idle"
+                state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
             end
         end,
         ["overdrive"] = function()
@@ -563,7 +566,59 @@ function draw_game_scene_char_LP()
 end
 
 function draw_game_scene_char_LP_shadow()
+    local obj = obj_char_game_scene_char_LP
+    local camera = obj_stage_game_scene_camera
+    local light_obj = obj_stage_game_scene_glow
+
+    local light_x = light_obj["glow_3d_pos"][1]
+    local light_y = light_obj["glow_3d_pos"][2]
+    local light_z = light_obj["glow_3d_pos"][3]
+
+    local camera_x = camera["enclose_percentage"]*camera["enclose_position_offset"][1] + (1-camera["enclose_percentage"])*camera[1]
+    local camera_y = camera["enclose_percentage"]*camera["enclose_position_offset"][2] + (1-camera["enclose_percentage"])*camera[2]
+    local camera_z = camera["enclose_percentage"]*camera["enclose_position_offset"][3] + (1-camera["enclose_percentage"])*camera[3]
+
+    local scale = draw_resolution_correction(800)/(light_z-camera_z)
+
+    local width = love.graphics.getWidth()
+    local height = love.graphics.getHeight()
+
+    local cood_res = {
+        scale * (light_x - camera_x) + draw_resolution_correction(800),
+        scale * (light_y - camera_y) + draw_resolution_correction(450)
+    }
+    local dx_light_char_2d = 
+    math.abs(
+        (scale * (obj["x"] - camera_x) + draw_resolution_correction(800)) - cood_res[1]
+    )
+
+    local character_canvas = love.graphics.newCanvas(width,height)
+    local shadow_canvas = love.graphics.newCanvas(width,height)
+    love.graphics.setCanvas(character_canvas)
+    draw_game_scene_char_LP()
+    love.graphics.setCanvas()
+
     
+    local center_blur_start = 0.45
+    local side_blur_start = 1.2
+    local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
+    local blur_width = 1.0 - blur_start
+    print(blur_start)
+    love.graphics.setCanvas(shadow_canvas)
+    love.graphics.setShader(shader_game_scene_shadow_radial_blur)
+    shader_game_scene_shadow_radial_blur:send("start_coods", cood_res)
+    shader_game_scene_shadow_radial_blur:send("input_screen_coords", {width, height})
+    shader_game_scene_shadow_radial_blur:send("blur_start", blur_start)
+    shader_game_scene_shadow_radial_blur:send("blur_width", blur_width)
+    love.graphics.draw(character_canvas, 0, 0)
+    love.graphics.setShader()
+    love.graphics.setCanvas()
+
+    local opacity = math.max(0,(obj["y"] - 345)/20)*0.75
+    love.graphics.setColor(0,0,0,opacity)
+    love.graphics.draw(shadow_canvas)
+    love.graphics.setColor(1,1,1,1)
+
 end
 
 function draw_game_scene_char_LP_hurtbox()

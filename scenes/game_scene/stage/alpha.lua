@@ -196,7 +196,7 @@ function draw_game_scene_stage_glow()
     local alpha_only_canvas = love.graphics.newCanvas(width,height)
 
     love.graphics.setCanvas(alpha_only_canvas)
-    love.graphics.rectangle("fill", 0, 0, width, height/2)
+    love.graphics.rectangle("fill", 0, 0, width, height/3)
     love.graphics.draw(
         image_stage_game_scene_stage_liner_fade_alpha,
         0,-camera_y,0,
@@ -217,7 +217,6 @@ function draw_game_scene_stage_glow()
     love.graphics.setShader(shader_game_scene_radial_blur)
     shader_game_scene_radial_blur:send("start_coods", cood_res)
     shader_game_scene_radial_blur:send("input_screen_coords", {width, height})
-    love.graphics.setColor(1, 1, 1)
     love.graphics.draw(glow_canvas, 0, 0)
     love.graphics.setShader()
     love.graphics.setCanvas()
@@ -230,7 +229,7 @@ function draw_game_scene_stage_glow()
     love.graphics.setCanvas()
 
     love.graphics.setBlendMode("add")
-    love.graphics.setColor(1, 1, 1, 0.65)
+    love.graphics.setColor(1, 1, 1, 0.8)
     love.graphics.draw(alpha_comp_canvas)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setBlendMode("alpha")
