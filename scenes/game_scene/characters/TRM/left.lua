@@ -613,7 +613,7 @@ function draw_game_scene_char_LP_shadow()
     love.graphics.setShader()
     love.graphics.setCanvas()
 
-    local opacity = math.max(0,(obj["y"] - 345)/20)*0.75
+    local opacity = math.max(0,(obj["y"] - 345)/20)
     love.graphics.setColor(0,0,0,opacity)
     love.graphics.draw(shadow_canvas)
     love.graphics.setColor(1,1,1,1)
