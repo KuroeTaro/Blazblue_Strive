@@ -53,7 +53,7 @@ function love.run()
 		if love.timer then FRST = FRST + love.timer.step() end
         -- Call update and draw
 		if FRST >= 1/60 then
-			
+
 			-- local updateStartTime = love.timer.getTime()
 			-- local cpu_heavy_task = function()
 			-- 	-- 模拟繁重的 CPU 运算，消耗时间
@@ -65,10 +65,10 @@ function love.run()
 			-- end
 			-- cpu_heavy_task()
 			local s = love.timer.getTime()
-            if love.update then love.update() end -- will pass 0 if love.timer is disabled
+			if love.update then love.update() end -- will pass 0 if love.timer is disabled
 
-            if love.draw then love.draw() end
-            love.graphics.present()
+			if love.draw then love.draw() end
+			love.graphics.present()
 			local gap = love.timer.getTime() - s 
 			if gap > 1/60 then
 				print("frame gaps:",gap)
@@ -77,8 +77,8 @@ function love.run()
 			-- local updateEndTime = love.timer.getTime()
 			-- print(updateStartTime-updateEndTime)
 
-            FRST = math.fmod(FRST, 1/60)
-        end
+		FRST = math.fmod(FRST, 1/60)
+		end
 		collectgarbage()
 		if love.timer then love.timer.sleep(0.0005) end
 	end
