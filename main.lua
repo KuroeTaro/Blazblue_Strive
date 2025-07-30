@@ -77,9 +77,9 @@ function love.run()
 			-- local updateEndTime = love.timer.getTime()
 			-- print(updateStartTime-updateEndTime)
 
-		FRST = math.fmod(FRST, 1/60)
+			FRST = math.fmod(FRST, 1/60)
+			collectgarbage()
 		end
-		collectgarbage()
 		if love.timer then love.timer.sleep(0.0005) end
 	end
 	
