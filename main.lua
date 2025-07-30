@@ -52,7 +52,7 @@ function love.run()
 		-- Update dt, as we'll be passing it to update
 		if love.timer then FRST = FRST + love.timer.step() end
 		-- Call update and draw
-		if FRST >= 1/60 then
+		if FRST >= 1/60.25 then
 
 			-- local updateStartTime = love.timer.getTime()
 			-- local cpu_heavy_task = function()
@@ -71,22 +71,24 @@ function love.run()
 			love.graphics.present()
 			local gap = love.timer.getTime() - s 
 			if gap > 1/60 then
-				print("frame gaps:",gap)
+				DEBUG_GAP_NUM = DEBUG_GAP_NUM + 1
+				print("frame gaps:",gap,DEBUG_GAP_NUM,SCENE_TIMER)
 			end
 
 			-- local updateEndTime = love.timer.getTime()
 			-- print(updateStartTime-updateEndTime)
 
 			FRST = math.fmod(FRST, 1/60)
-			collectgarbage()
 		end
-		if love.timer then love.timer.sleep(0.0005) end
+		collectgarbage()
+		if love.timer then love.timer.sleep(math.max(0,0.016-FRST*2)) end
 	end
 	
 end
 
 function love.load()
 
+	DEBUG_GAP_NUM = 0
 	DEBUG_PAUSE = false
 	DEBUG_PAUSE_STATE = "Released"
 	DEBUG_HITBOX_SHOWS = false

@@ -13,7 +13,7 @@ function love.conf(t)
 
     t.console = true
     t.window.title = "Blazblue_Strive.ver.1/8.002"
-    t.window.vsync = 1
+    t.window.vsync = 0
     t.modules.physics = false 
     t.modules.touch = false 
     t.modules.video = false
