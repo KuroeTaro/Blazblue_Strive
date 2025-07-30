@@ -142,13 +142,13 @@ end
 
 
 function load_char_select_scene_require()
-    require_all_in_folder("scenes/char_select_scene")
-    -- require("scenes/char_select_scene/common_functions")
-    -- require("scenes/char_select_scene/draw_functions")
-    -- require("scenes/char_select_scene/init")
-    -- require("scenes/char_select_scene/main_blocks")
-    -- require("scenes/char_select_scene/state_machine")
-    -- require("scenes/char_select_scene/sub_blocks")
+    require_all_in_folder("scenes_logic/char_select_scene")
+    -- require("scenes_logic/char_select_scene/common_functions")
+    -- require("scenes_logic/char_select_scene/draw_functions")
+    -- require("scenes_logic/char_select_scene/init")
+    -- require("scenes_logic/char_select_scene/main_blocks")
+    -- require("scenes_logic/char_select_scene/state_machine")
+    -- require("scenes_logic/char_select_scene/sub_blocks")
 
 end
 
@@ -163,7 +163,7 @@ function unload_char_select_scene_require()
             _G[key] = nil -- 删除该变量
         end
     end
-    require("scenes/char_select_scene/load_function")
+    require("scenes_logic/char_select_scene/load_function")
 
     -- common_char_select_scene_reset_char_text_ease_out = nil
     -- common_char_select_scene_reset_char_text_ease_in = nil

@@ -248,16 +248,16 @@ end
 
 
 function load_game_scene_require(LP_name,RP_name,stage_name)
-    require_all_in_folder("scenes/game_scene/_common")
-    require("scenes/game_scene/characters/" .. LP_name .. "/left")
-    require("scenes/game_scene/characters/" .. RP_name .. "/right")
-    require("scenes/game_scene/characters/" .. LP_name .. "/_anim")
-    require("scenes/game_scene/characters/" .. RP_name .. "/_anim")
-    require("scenes/game_scene/characters/" .. LP_name .. "/_projectile")
-    require("scenes/game_scene/characters/" .. RP_name .. "/_projectile")
-    require("scenes/game_scene/characters/" .. LP_name .. "/_VFX")
-    require("scenes/game_scene/characters/" .. RP_name .. "/_VFX")
-    require("scenes/game_scene/stage/" .. stage_name)
+    require_all_in_folder("scenes_logic/game_scene/_common")
+    require("scenes_logic/game_scene/characters/" .. LP_name .. "/left")
+    require("scenes_logic/game_scene/characters/" .. RP_name .. "/right")
+    require("scenes_logic/game_scene/characters/" .. LP_name .. "/_anim")
+    require("scenes_logic/game_scene/characters/" .. RP_name .. "/_anim")
+    require("scenes_logic/game_scene/characters/" .. LP_name .. "/_projectile")
+    require("scenes_logic/game_scene/characters/" .. RP_name .. "/_projectile")
+    require("scenes_logic/game_scene/characters/" .. LP_name .. "/_VFX")
+    require("scenes_logic/game_scene/characters/" .. RP_name .. "/_VFX")
+    require("scenes_logic/game_scene/stage/" .. stage_name)
 
 end
 

@@ -229,14 +229,14 @@ end
 
 
 function load_start_select_scene_require()
-    require_all_in_folder("scenes/start_scene")
-    -- require("scenes/start_scene/common_functions")
-    -- require("scenes/start_scene/draw_functions")
-    -- require("scenes/start_scene/init")
-    -- require("scenes/start_scene/load_function")
-    -- require("scenes/start_scene/main_blocks")
-    -- require("scenes/start_scene/state_machine")
-    -- require("scenes/start_scene/sub_blocks")
+    require_all_in_folder("scenes_logic/start_scene")
+    -- require("scenes_logic/start_scene/common_functions")
+    -- require("scenes_logic/start_scene/draw_functions")
+    -- require("scenes_logic/start_scene/init")
+    -- require("scenes_logic/start_scene/load_function")
+    -- require("scenes_logic/start_scene/main_blocks")
+    -- require("scenes_logic/start_scene/state_machine")
+    -- require("scenes_logic/start_scene/sub_blocks")
 
 end
 
@@ -250,7 +250,7 @@ function unload_start_select_scene_require()
             _G[key] = nil -- 删除该变量
         end
     end
-    require("scenes/start_scene/load_function")
+    require("scenes_logic/start_scene/load_function")
 
     -- update_start_scene_config_audio_main_update_volume = nil
 
