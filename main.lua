@@ -72,7 +72,7 @@ function love.run()
 			local gap = love.timer.getTime() - s 
 			if gap > 1/60 then
 				DEBUG_GAP_NUM = DEBUG_GAP_NUM + 1
-				print("frame gaps:",gap,DEBUG_GAP_NUM,SCENE_TIMER)
+				print("frame gaps:",gap,DEBUG_GAP_NUM,SCENE_TIMER,DEBUG_LAST_SLEEP)
 			end
 
 			-- local updateEndTime = love.timer.getTime()
@@ -81,7 +81,8 @@ function love.run()
 			FRST = math.fmod(FRST, 1/60)
 		end
 		collectgarbage()
-		if love.timer then love.timer.sleep(math.max(0,0.016-FRST*2)) end
+		DEBUG_LAST_SLEEP = math.max(0,1/120-FRST)
+		if love.timer then love.timer.sleep(DEBUG_LAST_SLEEP) end
 	end
 	
 end
@@ -89,6 +90,7 @@ end
 function love.load()
 
 	DEBUG_GAP_NUM = 0
+	DEBUG_LAST_SLEEP = 0
 	DEBUG_PAUSE = false
 	DEBUG_PAUSE_STATE = "Released"
 	DEBUG_HITBOX_SHOWS = false
