@@ -52,7 +52,7 @@ function love.run()
 		-- Update dt, as we'll be passing it to update
 		if love.timer then FRST = FRST + love.timer.step() end
 		-- Call update and draw
-		if FRST >= 1/60.25 then
+		if FRST >= 1/60 then
 
 			-- local updateStartTime = love.timer.getTime()
 			-- local cpu_heavy_task = function()
