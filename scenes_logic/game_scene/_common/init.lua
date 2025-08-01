@@ -50,8 +50,6 @@ function load_game_scene_common_shader()
 
     shader_game_scene_brightness_contrast = love.graphics.newShader("shaders/brightness_contrast.glsl")
 
-    shader_game_scene_bc7_alpha_fix = love.graphics.newShader("shaders/bc7_alpha_fix.glsl")
-
     shader_game_scene_gaussian_blur = love.graphics.newShader("shaders/gaussian_blur.glsl")
     shader_game_scene_gaussian_blur:send("Directions", 16)
     shader_game_scene_gaussian_blur:send("Quality", 5)
