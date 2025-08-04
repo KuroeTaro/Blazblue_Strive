@@ -860,7 +860,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
             obj_char["OTG_hurt_animation"] = nil
         end
 
-        obj_char["current_animation_length"] = 30 -- 如果为0则是循环动画
+        obj_char["current_animation_length"] = 27 -- 如果为0则是循环动画
 
         obj_char["hit_cancel"] = false -- 取消链
 
@@ -894,17 +894,24 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {193,515}
+        obj_char["anchor_pos"] = {233,520}
 
         common_game_scene_hit_load_camera_anim(obj_char,0.2)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
+    end
+    res[1] = function() 
+        -- state & state_number
+        add_heat_ability_overdrive()
+
+        -- draw_correction
+        obj_char[8] = 1
     end
     res[2] = function() 
         -- state & state_number
         add_heat_ability_overdrive()
 
         -- draw_correction
-        obj_char[8] = 1
+        obj_char[8] = 2
     end
     res[4] = function() 
         -- state & state_number
@@ -918,11 +925,11 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char["hitbox_table"] = {{119, -416, 260, 98}} --{ 攻击类型 打 投 指令投, 具体的box形状}
+        obj_char["hitbox_table"] = {{130, -416, 260, 98}} --{ 攻击类型 打 投 指令投, 具体的box形状}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50},{119, -416, 320, 128}}
 
         -- draw_correction
-        obj_char[8] = 2
+        obj_char[8] = 3
 
         -- VFX
         insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
@@ -931,12 +938,12 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
-    res[6] = function() 
+    res[5] = function() 
         -- state & state_number
         add_heat_ability_overdrive()
 
         -- draw_correction
-        obj_char[8] = 3
+        obj_char[8] = 4
     end
     res[8] = function() 
         -- state
@@ -954,14 +961,12 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
 
-        -- draw_correction
-        obj_char[8] = 4
     end
     res[10] = function()
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
     end
-    res[11] = function() 
+    res[12] = function() 
         -- draw_correction
         obj_char[8] = 5
     end
@@ -987,26 +992,18 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hurt_gravity_correction"] = 1
         obj_char["hurt_damage_correction"] = 1
 
-        -- draw_correction
-        obj_char[8] = 6
     end
     res[19] = function() 
         -- draw_correction
-        obj_char[8] = 7
+        obj_char[8] = 6
     end
-    res[23] = function() 
-        -- draw_correction
-        obj_char[8] = 8
-    end
-    res[25] = function()
+    res[22] = function() 
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
+        -- draw_correction
+        obj_char[8] = 7
     end
     res[27] = function() 
-        -- draw_correction
-        obj_char[8] = 9
-    end
-    res[30] = function() 
         -- animation end
     end
 
