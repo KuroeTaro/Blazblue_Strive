@@ -19,7 +19,7 @@ function load_game_scene_obj_stage()
     obj_stage_game_scene_ground = {-2400, 320, 200, 1, 1, 1, 0, 0}
     obj_stage_game_scene_stair = {-2400, 175, 300, 1, 1, 1, 0, 0}
     obj_stage_game_scene_glow = {0, 0, -800, 1, 1, 1, 0, 0}
-    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2000,800}
+    obj_stage_game_scene_glow["glow_3d_pos"] = {0,-2200,1600}
     obj_stage_game_scene_tile_map = {-3600, -1535, 800, 1, 1, 1, 0, 0}
 
     -- adjust_character_color
@@ -176,9 +176,9 @@ function draw_game_scene_stage_glow()
     local y = obj["glow_3d_pos"][2]
     local z = obj["glow_3d_pos"][3]
 
-    local camera_x = camera["enclose_percentage"]*camera["enclose_position_offset"][1] + (1-camera["enclose_percentage"])*camera[1]
-    local camera_y = camera["enclose_percentage"]*camera["enclose_position_offset"][2] + (1-camera["enclose_percentage"])*camera[2]
-    local camera_z = camera["enclose_percentage"]*camera["enclose_position_offset"][3] + (1-camera["enclose_percentage"])*camera[3]
+    local camera_x = camera[1]
+    local camera_y = camera[2]
+    local camera_z = camera[3]
 
     local scale = draw_resolution_correction(800)/(z-camera_z)
 

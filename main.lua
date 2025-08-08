@@ -72,7 +72,7 @@ function love.run()
 			local gap = love.timer.getTime() - s 
 			if gap > 1/60 then
 				DEBUG_GAP_NUM = DEBUG_GAP_NUM + 1
-				print("frame gaps:",gap,DEBUG_GAP_NUM,SCENE_TIMER,DEBUG_LAST_SLEEP)
+				-- print("frame gaps:",gap,DEBUG_GAP_NUM,SCENE_TIMER,DEBUG_LAST_SLEEP)
 			end
 
 			-- local updateEndTime = love.timer.getTime()

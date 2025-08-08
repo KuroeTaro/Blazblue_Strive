@@ -574,9 +574,9 @@ function draw_game_scene_char_LP_shadow()
     local light_y = light_obj["glow_3d_pos"][2]
     local light_z = light_obj["glow_3d_pos"][3]
 
-    local camera_x = camera["enclose_percentage"]*camera["enclose_position_offset"][1] + (1-camera["enclose_percentage"])*camera[1]
-    local camera_y = camera["enclose_percentage"]*camera["enclose_position_offset"][2] + (1-camera["enclose_percentage"])*camera[2]
-    local camera_z = camera["enclose_percentage"]*camera["enclose_position_offset"][3] + (1-camera["enclose_percentage"])*camera[3]
+    local camera_x = camera[1]
+    local camera_y = camera[2]
+    local camera_z = camera[3]
 
     local scale = draw_resolution_correction(800)/(light_z-camera_z)
 
@@ -587,10 +587,7 @@ function draw_game_scene_char_LP_shadow()
         scale * (light_x - camera_x) + draw_resolution_correction(800),
         scale * (light_y - camera_y) + draw_resolution_correction(450)
     }
-    local dx_light_char_2d = 
-    math.abs(
-        (scale * (obj["x"] - camera_x) + draw_resolution_correction(800)) - cood_res[1]
-    )
+    local dx_light_char_2d = math.abs((light_x - camera_x))
 
     local character_canvas = love.graphics.newCanvas(width,height)
     local shadow_canvas = love.graphics.newCanvas(width,height)
@@ -598,9 +595,8 @@ function draw_game_scene_char_LP_shadow()
     draw_game_scene_char_LP()
     love.graphics.setCanvas()
 
-    
-    local center_blur_start = 0.45
-    local side_blur_start = 1.2
+    local center_blur_start = 0.5
+    local side_blur_start = 0.85
     local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
     local blur_width = (1.0 - blur_start)*0.75
     love.graphics.setCanvas(shadow_canvas)

@@ -305,13 +305,12 @@ function update_game_scene_main_training()
                 -- 检测双康
                 if LP_hurt_strike_accur and RP_hurt_strike_accur then
                     local obj_camera = obj_stage_game_scene_camera
-                    
-                    -- char_LP["hit_hurt_blockstop_countdown"] = 0
-                    -- char_RP["hit_hurt_blockstop_countdown"] = 0
-                    -- char_LP["hit_hurt_block_slowdown_countdown"] = 0
-                    -- char_RP["hit_hurt_block_slowdown_countdown"] = 0
-                    -- char_LP["game_speed"] = 1
-                    -- char_RP["game_speed"] = 1
+                    char_LP["hit_hurt_blockstop_countdown"] = 0
+                    char_RP["hit_hurt_blockstop_countdown"] = 0
+                    char_LP["hit_hurt_block_slowdown_countdown"] = 0
+                    char_RP["hit_hurt_block_slowdown_countdown"] = 0
+                    char_LP["game_speed"] = 1
+                    char_RP["game_speed"] = 1
                     obj_camera["state"] = "main"
                     obj_camera["enclose_percentage"] = 0.0
                     obj_camera["enclose_position_offset"] = {0, 0, 0}
