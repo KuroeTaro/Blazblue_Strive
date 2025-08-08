@@ -381,6 +381,8 @@ function common_game_scene_strike_hurt_function(obj_char)
         end
     end
 
+    -- change draw front
+    CHARACTER_VISUAL_FRONT = hit_side_obj_char["player_side"]
     -- idle block
     if (obj_char["hurt_state"] == "idle" and common_game_scene_check_block_direction(obj_char["player_side"])) then
         common_block()

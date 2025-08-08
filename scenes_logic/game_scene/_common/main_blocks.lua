@@ -4,6 +4,7 @@ function update_game_scene_main_training()
         -- ease_in 之前的状态 如果达到第10帧则为下一个动画的第0帧 
         ["before_ease_in"] = function()
             SCENE_TIMER = SCENE_TIMER + 1
+            state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
 
             -- 状态出口
             if SCENE_TIMER >= 5 then
@@ -27,6 +28,8 @@ function update_game_scene_main_training()
         end,
         ["black_solid_ease_in"] = function()
             SCENE_TIMER = SCENE_TIMER + 1
+            state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
+
             update_game_scene_char()
             
             point_linear_animator(
@@ -49,6 +52,8 @@ function update_game_scene_main_training()
         end,
         ["annoucer_ease_in_1"] = function()
             SCENE_TIMER = SCENE_TIMER + 1
+            state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
+
             update_game_scene_char()
 
             if SCENE_TIMER <= 5 then
@@ -138,6 +143,7 @@ function update_game_scene_main_training()
 
             -- 更新HUD
             -- 更新场景
+            state_machine_UI_game_scene_movie_cover_loop(obj_UI_game_scene_movie_cover)
 
             if SCENE_TIMER == 0 then
                 obj_char_game_scene_char_LP["input_sys_state"] = "load"
@@ -300,12 +306,12 @@ function update_game_scene_main_training()
                 if LP_hurt_strike_accur and RP_hurt_strike_accur then
                     local obj_camera = obj_stage_game_scene_camera
                     
-                    char_LP["hit_hurt_blockstop_countdown"] = 0
-                    char_RP["hit_hurt_blockstop_countdown"] = 0
-                    char_LP["hit_hurt_block_slowdown_countdown"] = 0
-                    char_RP["hit_hurt_block_slowdown_countdown"] = 0
-                    char_LP["game_speed"] = 1
-                    char_RP["game_speed"] = 1
+                    -- char_LP["hit_hurt_blockstop_countdown"] = 0
+                    -- char_RP["hit_hurt_blockstop_countdown"] = 0
+                    -- char_LP["hit_hurt_block_slowdown_countdown"] = 0
+                    -- char_RP["hit_hurt_block_slowdown_countdown"] = 0
+                    -- char_LP["game_speed"] = 1
+                    -- char_RP["game_speed"] = 1
                     obj_camera["state"] = "main"
                     obj_camera["enclose_percentage"] = 0.0
                     obj_camera["enclose_position_offset"] = {0, 0, 0}

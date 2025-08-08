@@ -9,8 +9,8 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     end 
 
     obj["life"] = 8
-    obj[1] = obj_char["x"] + obj_char[5]*(-253)
-    obj[2] = obj_char["y"] + obj_char[6]*(-462)
+    obj[1] = obj_char["x"] + obj_char[5]*(56)
+    obj[2] = obj_char["y"] + obj_char[6]*(-454)
     obj[3] = obj_char[3]
     obj[4] = 1
     obj[5] = obj_char[5]
@@ -32,8 +32,8 @@ function insert_VFX_game_scene_char_TRM_5P_whiff(obj_char)
     obj["update"] = function(self)
         -- self[1] = obj_char["x"] + obj_char[5]*(-860)/2
         -- self[2] = obj_char["y"] + obj_char[6]*(840)
-        self[1] = obj_char["x"] + obj_char[5]*(-253)
-        self[2] = obj_char["y"] + obj_char[6]*(-462)
+        self[1] = obj_char["x"] + obj_char[5]*(56)
+        self[2] = obj_char["y"] + obj_char[6]*(-454)
         self[3] = obj_char[3]
         self[4] = 1
         self[5] = obj_char[5]

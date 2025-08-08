@@ -294,19 +294,11 @@ function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
         self[5] = obj_char[5]*sx
         self[6] = obj_char[6]*sy
         self[7] = r
-        if obj_char["state"] == "5P" 
-        or obj_char["state"] == "2P"
-        or obj_char["state"] == "jP" 
-        or obj_char["state"] == "hurt" 
-        then
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
-        elseif obj_char["state"] == "hitstop"
-        or obj_char["state"] == "hurtstop" 
-        then
+        if obj_char["state"] == "hitstop" then
             -- do nothing
         else
-            self["life"] = 0
+            frame_animator(self,self["animation"])
+            self["life"] = self["life"] - 1
         end
     end
     obj["draw"] = function(self)
@@ -324,11 +316,8 @@ function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
 end
 
 function insert_VFX_game_scene_char_counter_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
-    insert_VFX_game_scene_char_ver0_blast(obj_char,x+45,y+263,0.5,0.55,0.55,0)
     -- x y z opacity sx sy r f
-    local obj = {0, 0, 0, 1, 0.9, 0.9, 0, 0}
-    local sx = 1
-    local sy = 1
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 27
     obj[1] = obj_char["x"] + obj_char[5]*(x)
     obj[2] = obj_char["y"] + obj_char[6]*(y)
@@ -365,18 +354,8 @@ function insert_VFX_game_scene_char_counter_ver0_blast(obj_char,x,y,opacity,sx,s
         self[5] = obj_char[5]*sx
         self[6] = obj_char[6]*sy
         self[7] = r
-        if obj_char["state"] == "5P" 
-        or obj_char["state"] == "2P"
-        or obj_char["state"] == "jP" 
-        or obj_char["state"] == "hitstop"
-        or obj_char["state"] == "hurt" 
-        or obj_char["state"] == "hurtstop" 
-        then
-            frame_animator(self,self["animation"])
-            self["life"] = self["life"] - 1
-        else
-            self["life"] = 0
-        end
+        frame_animator(self,self["animation"])
+        self["life"] = self["life"] - 1
     end
     obj["draw"] = function(self)
         local obj_camera = obj_stage_game_scene_camera
@@ -609,9 +588,7 @@ function insert_VFX_HUD_game_scene_counter_ver3(obj_char)
         end
     end
     obj["draw"] = function(self)
-        love.graphics.setBlendMode("add")
         draw_2d_image(self,self["image"])
-        love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_HUD_table"],obj)
 end

@@ -80,6 +80,12 @@ function load_game_scene_announcer_HUD_obj()
     obj_UI_game_scene_black_solid["state"] = "default"
     obj_UI_game_scene_black_solid["rgb"] = {7/255,19/255,31/255}
 
+    obj_UI_game_scene_movie_cover = {0, 0, nil, 0.8, 1, 1, 0, 0}
+    obj_UI_game_scene_movie_cover["FCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_game_scene_movie_cover["LCT"] = {0,0,0,0,0,0,0,0}
+    obj_UI_game_scene_movie_cover["LCD"] = {0,0,0,0,0,0,0,0}
+    obj_UI_game_scene_movie_cover["state"] = "default"
+
     obj_annoucer_game_scene_act_common = {0, 200, nil, 0, 1, 1, 0, 0}
     obj_annoucer_game_scene_act_common["FCT"] = {0,0,0,0,0,0,0,0}
     obj_annoucer_game_scene_act_common["LCT"] = {0,0,0,0,0,0,0,0}

@@ -23,12 +23,12 @@ function draw_game_scene_main()
         love.graphics.getHeight()
     )
     love.graphics.setCanvas(character_canvas)
-    if VISUAL_FRONT == "L" then
-        draw_game_scene_char_LP() -- IZAYA 2 draw calls 3
-        draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
-    elseif VISUAL_FRONT == "R" then
+    if CHARACTER_VISUAL_FRONT == "L" then
         draw_game_scene_char_RP() -- IZAYA 2 draw calls 3
-        draw_game_scene_char_LP() -- IZAYA 2 draw calls 4
+        draw_game_scene_char_LP()
+    elseif CHARACTER_VISUAL_FRONT == "R" then
+        draw_game_scene_char_LP()
+        draw_game_scene_char_RP() -- IZAYA 2 draw calls 4
     end
     love.graphics.setCanvas()
     love.graphics.draw(character_canvas)
@@ -192,13 +192,13 @@ function draw_game_scene_main()
     )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
 
+    draw_game_scene_char_LP_VFX_HUD()
+    draw_game_scene_char_RP_VFX_HUD()
+
     -- 透过上帝光和HUD
     love.graphics.setColor(1,1,1,0.5)
     love.graphics.draw(character_canvas) -- 1 draw call 13
     love.graphics.setColor(1,1,1,1)
-
-    draw_game_scene_char_LP_VFX_HUD()
-    draw_game_scene_char_RP_VFX_HUD()
 
     draw_game_scene_char_LP_VFX_front()
     draw_game_scene_char_RP_VFX_front()
@@ -228,6 +228,13 @@ function draw_game_scene_main()
     -- draw_2d_image_table(obj_annoucer_game_scene_act_num,image_table_announcer_game_scene_act_number[ROUND_COUNTER]) -- 1 draw call 15
     -- draw_2d_image_table(obj_annoucer_game_scene_lets_dance,image_table_announcer_game_scene_lets_dance) -- 1 draw call 17
 
+    image_sprite_sheet = image_sprite_sheet_UI_game_scene_movie_cover
+    obj = obj_UI_game_scene_movie_cover
+    image_sprite_sheet["sprite_batch"]:clear()
+    draw_2d_image_sprite_batch(obj,image_sprite_sheet,""..obj[8].."")
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    love.graphics.setBlendMode("alpha")
 
     -- DEBUG
     draw_game_scene_char_LP_hurtbox()

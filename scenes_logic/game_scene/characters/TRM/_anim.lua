@@ -883,9 +883,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_ver0_blast
-        obj_char["hit_VFX_insert_function_argument"] = {obj_char,40,-590,0.8,0.75,0.75,0}
+        obj_char["hit_VFX_insert_function_argument"] = {obj_char,99,-576,0.8,0.75,0.75,0}
         obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_ver0_blast
-        obj_char["counter_VFX_insert_function_argument"] = {obj_char,-2,-855,1,0.9,0.9,0}
+        obj_char["counter_VFX_insert_function_argument"] = {obj_char,88,-815,1,0.9,0.9,0}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil
         obj_char["block_VFX_insert_function_argument"] = nil
@@ -998,8 +998,6 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char[8] = 6
     end
     res[22] = function() 
-        obj_char["input_sys_state"] = "save" -- none save load
-        init_input_sys_cache(obj_char)
         -- draw_correction
         obj_char[8] = 7
     end
