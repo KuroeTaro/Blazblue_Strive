@@ -246,8 +246,8 @@ function load_game_scene_hurtbox_data_RP()
     obj_hurtboxs_data_game_scene_char_RP = {}
     obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"] = {}
     obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][0] = {{0, -220, 220, 440},{12, -461, 100, 42}}
-    obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][1] = {{2, -200, 230, 400},{-21, -430, 100, 60}}
-    obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][2] = {{2, -200, 260, 400}}
+    obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][1] = {{2, -200, 260, 400},{-21, -430, 100, 60}}
+    obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][2] = {{2, -200, 300, 400}}
     obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][3] = {{-9, -190, 360, 380}}
     obj_hurtboxs_data_game_scene_char_RP["stand_hurt_high"][4] = {{-9, -190, 386, 380}}
 

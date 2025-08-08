@@ -1140,22 +1140,12 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][3]
-        
-        -- draw_correction
-        obj_char_other_side[8] = 3
-    end
-    res[6] = function() 
-        -- state
-        add_heat_ability_overdrive()
-
-        -- collide
         obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][2]
-
+        
         -- draw_correction
         obj_char_other_side[8] = 2
     end
-    res[7] = function() 
+    res[8] = function() 
         obj_char_other_side["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char_other_side)
     end
