@@ -1131,7 +1131,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
 
         -- draw_correction
         obj_char_other_side[8] = 0
-        obj_char_other_side["anchor_pos"] = {209,520}
+        obj_char_other_side["anchor_pos"] = {206,520}
         obj_char_other_side["hurtstop_wiggle_x"] = 0
         obj_char_other_side["hurtstop_wiggle_y"] = 0
     end
@@ -1140,17 +1140,20 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][2]
+        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][3]
         
         -- draw_correction
-        obj_char_other_side[8] = 2
+        obj_char_other_side[8] = 3
     end
     res[6] = function() 
         -- state
         add_heat_ability_overdrive()
 
+        -- collide
+        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][2]
+
         -- draw_correction
-        obj_char_other_side[8] = 3
+        obj_char_other_side[8] = 2
     end
     res[7] = function() 
         obj_char_other_side["input_sys_state"] = "save" -- none save load
@@ -1161,17 +1164,20 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][4]
+        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][1]
 
         -- draw_correction
-        obj_char_other_side[8] = 4
+        obj_char_other_side[8] = 1
     end
     res[11] = function() 
         -- state
         add_heat_ability_overdrive()
 
+        -- collide
+        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][0]
+
         -- draw_correction
-        obj_char_other_side[8] = 5
+        obj_char_other_side[8] = 0
     end
     res[13] = function() 
         -- animation end
