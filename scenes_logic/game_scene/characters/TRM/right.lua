@@ -598,7 +598,7 @@ function draw_game_scene_char_RP_shadow()
     local center_blur_start = 0.5
     local side_blur_start = 0.85
     local blur_start = side_blur_start - ((width-dx_light_char_2d)/width*(side_blur_start-center_blur_start))
-    local blur_width = (1.0 - blur_start)*0.75
+    local blur_width = (1.0 - blur_start)*0.85
     love.graphics.setCanvas(shadow_canvas)
     love.graphics.setShader(shader_game_scene_shadow_radial_blur)
     shader_game_scene_shadow_radial_blur:send("start_coods", cood_res)
