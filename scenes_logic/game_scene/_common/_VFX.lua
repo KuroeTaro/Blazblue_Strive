@@ -126,18 +126,6 @@ function insert_VFX_game_scene_char_overdrive_partical(obj_char)
         local image_sprite_sheet = image_sprite_sheet_VFX_game_scene_overdrive_partical
         image_sprite_sheet["sprite_batch"]:clear()
         draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
-        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
     
         love.graphics.setBlendMode("add")
         love.graphics.draw(image_sprite_sheet["sprite_batch"])
@@ -172,23 +160,23 @@ function insert_VFX_game_scene_char_overdrive_black_overlay(obj_char)
     
     obj["opacity_ease_in_anim"] = {}
     obj["opacity_ease_in_anim"][0] = {0.00, 1}
-    obj["opacity_ease_in_anim"][1] = {0.02, 3}
-    obj["opacity_ease_in_anim"][3] = {0.04, 7}
-    obj["opacity_ease_in_anim"][7] = {0.7, 14}
-    obj["opacity_ease_in_anim"][14] = {0.9, 18}
-    obj["opacity_ease_in_anim"][18] = {0.10, 28}
-    obj["opacity_ease_in_anim"][28] = {0.11, 29}
-    obj["opacity_ease_in_anim"][29] = {0.18, 30}
-    obj["opacity_ease_in_anim"][30] = {0.22, 31}
-    obj["opacity_ease_in_anim"][31] = {0.24, 33}
-    obj["opacity_ease_in_anim"][33] = {0.25, 33}
+    obj["opacity_ease_in_anim"][1] = {0.04, 3}
+    obj["opacity_ease_in_anim"][3] = {0.08, 7}
+    obj["opacity_ease_in_anim"][7] = {0.14, 14}
+    obj["opacity_ease_in_anim"][14] = {0.18, 18}
+    obj["opacity_ease_in_anim"][18] = {0.20, 28}
+    obj["opacity_ease_in_anim"][28] = {0.22, 29}
+    obj["opacity_ease_in_anim"][29] = {0.36, 30}
+    obj["opacity_ease_in_anim"][30] = {0.44, 31}
+    obj["opacity_ease_in_anim"][31] = {0.48, 33}
+    obj["opacity_ease_in_anim"][33] = {0.50, 33}
     obj["opacity_ease_in_anim"]["prop"] = 4
     obj["opacity_ease_in_anim"]["length"] = 33
     obj["opacity_ease_in_anim"]["loop"] = false
     obj["opacity_ease_in_anim"]["fix_type"] = true
 
     obj["opacity_ease_out_anim"] = {}
-    obj["opacity_ease_out_anim"][0] = {0.25, 10}
+    obj["opacity_ease_out_anim"][0] = {0.50, 10}
     obj["opacity_ease_out_anim"][10] = {0.00, 10}
     obj["opacity_ease_out_anim"]["prop"] = 4
     obj["opacity_ease_out_anim"]["length"] = 10
@@ -262,7 +250,7 @@ end
 
 
 -- blast slash directional ray_impact
-function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_ver0_hit_blast(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 11
@@ -315,7 +303,7 @@ function insert_VFX_game_scene_char_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
     
 end
 
-function insert_VFX_game_scene_char_counter_ver0_blast(obj_char,x,y,opacity,sx,sy,r)
+function insert_VFX_game_scene_char_counter_ver0_hit_blast(obj_char,x,y,opacity,sx,sy,r)
     -- x y z opacity sx sy r f
     local obj = {0, 0, 0, 1, 1, 1, 0, 0}
     obj["life"] = 27
@@ -368,6 +356,10 @@ function insert_VFX_game_scene_char_counter_ver0_blast(obj_char,x,y,opacity,sx,s
         love.graphics.setBlendMode("alpha")
     end
     table.insert(obj_char["VFX_front_table"],obj)
+end
+
+function insert_VFX_game_scene_char_hurt_smoke(obj_char,x,y,opacity,sx,sy,r)
+
 end
 
 

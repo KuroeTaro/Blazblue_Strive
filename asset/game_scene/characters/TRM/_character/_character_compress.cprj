@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROJECT>
+    <Image File="F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.png">
+        <Compression Setting="TRM_overdrive_badge" Enabled="False">
+            <Source>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.png</Source>
+            <Destination>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/results/TRM_overdrive_badge.DDS</Destination>
+            <fd>BC7</fd>
+            <Quality>1</Quality>
+            <WeightR>0.3086</WeightR>
+            <WeightG>0.6094</WeightG>
+            <WeightB>0.082</WeightB>
+            <AlphaThreshold>0</AlphaThreshold>
+            <RefineSteps>0</RefineSteps>
+            <BlockRate>8.00</BlockRate>
+        </Compression>
+    </Image>
+</PROJECT>

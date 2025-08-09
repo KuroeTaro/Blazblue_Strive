@@ -549,7 +549,7 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         end
     end
     
-    for i = 0,79 do
+    for i = 0,69 do
         res[i] = function()
             -- state
             update_move_overdrive_state()
@@ -565,18 +565,18 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         obj_char["hurt_state"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
 
-        obj_char["current_animation_length"] = 80 -- 如果为0则是循环动画
+        obj_char["current_animation_length"] = 70 -- 如果为0则是循环动画
 
         obj_char["hit_cancel"] = false -- 取消链
 
         obj_char["strike_inv"] = true
-        obj_char["strike_inv_countdown"] = 80
+        obj_char["strike_inv_countdown"] = 70
         obj_char["throw_inv"] = true
-        obj_char["throw_inv_countdown"] = 80
+        obj_char["throw_inv_countdown"] = 70
         obj_char["projectile_inv"] = true
-        obj_char["projectile_inv_countdown"] = 80
+        obj_char["projectile_inv_countdown"] = 70
         obj_char["burst_inv"] = true
-        obj_char["burst_inv_countdown"] = 80
+        obj_char["burst_inv_countdown"] = 70
 
         obj_char["hit_function"] = function() end
         obj_char["hurt_function"] = function() end
@@ -609,7 +609,7 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
 
         -- draw_correction
         obj_char[8] = 0
-        obj_char["anchor_pos"] = {169,530}
+        obj_char["anchor_pos"] = {286,619}
         obj_char["hurtstop_wiggle_x"] = 0
         obj_char["hurtstop_wiggle_y"] = 0
 
@@ -627,50 +627,41 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         obj_char_other_side["game_speed"] = 0
         obj_char_other_side["game_speed_subframe"] = 0
         if obj_char["hurt_state"] == "idle" or  obj_char["unblock"] == "idle" then
-            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 80 - 13 ---- 之后对面玩家根据情况不同要改
+            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = obj_char["current_animation_length"] - 13 ---- 之后对面玩家根据情况不同要改
         elseif obj_char["state"] == "hitstop" then
-            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 80 - 3 ---- 之后对面玩家根据情况不同要改
+            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = obj_char["current_animation_length"] - 3 ---- 之后对面玩家根据情况不同要改
         elseif obj_char["state"] == "blockstop" then
-            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = 80 - 23 ---- 之后对面玩家根据情况不同要改
+            obj_char_other_side["game_speed_abnormal_realtime_countdown"] = obj_char["current_animation_length"] - 23 ---- 之后对面玩家根据情况不同要改
         end
+
+    end
+    res[4] = function()
+        -- state & state_number
+        update_move_overdrive_state()
 
         -- draw_correction
         obj_char[8] = 1
     end
-    res[6] = function() 
+    res[8] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
         obj_char[8] = 2
     end
-    res[9] = function() 
+    res[12] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
         obj_char[8] = 3
     end
-    res[14] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 4
-    end
-    res[19] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 5
-    end
     res[28] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 6
+        obj_char[8] = 4
     end
     res[30] = function()
         -- state & state_number
@@ -684,116 +675,110 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 8
+        obj_char[8] = 5
     end
     res[35] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 7
+        obj_char[8] = 6
     end
     res[38] = function() 
         -- state & state_number
         update_move_overdrive_state()
-        if obj_char["health"][1]/obj_char["health"][3] > 0.85 then
-            obj_char["overdrive_timer"] = {0,2,0,0}
-        elseif obj_char["health"][1]/obj_char["health"][3] > 0.60 then
-            obj_char["overdrive_timer"] = {0,3,0,0}
-        elseif obj_char["health"][1]/obj_char["health"][3] > 0.45 then
-            obj_char["overdrive_timer"] = {0,4,0,0}
-        elseif obj_char["health"][1]/obj_char["health"][3] > 0.35 then
-            obj_char["overdrive_timer"] = {0,5,0,0}
+        local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+        if obj_char_other_side["state"] == "hurtstop" or obj_char_other_side["state"] == "blockstop" then
+            if obj_char["health"][1]/obj_char["health"][3] > 0.85 then
+                obj_char["overdrive_timer"] = {0,2,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.60 then
+                obj_char["overdrive_timer"] = {0,3,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.45 then
+                obj_char["overdrive_timer"] = {0,4,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.35 then
+                obj_char["overdrive_timer"] = {0,5,0,0}
+            else
+                obj_char["overdrive_timer"] = {0,6,0,0}
+            end
         else
-            obj_char["overdrive_timer"] = {0,6,0,0}
+            if obj_char["health"][1]/obj_char["health"][3] > 0.85 then
+                obj_char["overdrive_timer"] = {0,4,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.60 then
+                obj_char["overdrive_timer"] = {0,6,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.45 then
+                obj_char["overdrive_timer"] = {0,8,0,0}
+            elseif obj_char["health"][1]/obj_char["health"][3] > 0.35 then
+                obj_char["overdrive_timer"] = {1,0,0,0}
+            else
+                obj_char["overdrive_timer"] = {1,2,0,0}
+            end
         end
         obj_char["overdrive"][3] = "on"
 
         -- draw_correction
-        obj_char[8] = 9
+        obj_char[8] = 7
     end
     res[41] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 7
+        obj_char[8] = 5
     end
     res[44] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 8
+        obj_char[8] = 6
     end
     res[47] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 9
+        obj_char[8] = 7
     end
     res[50] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 7
+        obj_char[8] = 5
     end
     res[53] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 8
+        obj_char[8] = 6
     end
     res[56] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 9
-    end
-    res[58] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 10
+        obj_char[8] = 7
     end
     res[60] = function() 
         -- state & state_number
         update_move_overdrive_state()
 
         -- draw_correction
-        obj_char[8] = 11
+        obj_char[8] = 8
     end
-    res[63] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 12
-    end
-    res[67] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 13
-    end
-    res[72] = function() 
-        -- state & state_number
-        update_move_overdrive_state()
-
-        -- draw_correction
-        obj_char[8] = 14
-    end
-    res[75] = function()
+    res[65] = function() 
+        -- input_sys_cache
         obj_char["input_sys_state"] = "save" -- none save load
         init_input_sys_cache(obj_char)
+
+        -- state & state_number
+        update_move_overdrive_state()
+
+        -- draw_correction
+        obj_char[8] = 9
     end
-    res[80] = function()
+    res[70] = function()
         -- animation end
     end
 
@@ -801,6 +786,16 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
 
 end
 
+
+
+-- hurt_animation type
+    -- stand_hurt_high/mid/low
+    -- crouch_hurt
+    -- launched/semi_launched_high/mid/low
+    -- launched_land/semi_launched_land_high/mid/low
+    -- air_hurt_high/mid/low
+    -- air_launched/semi_launched_high/mid/low
+    -- air_launched_land/semi_launched_land_high/mid/low
 
 
 
@@ -882,9 +877,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
 
         -- sub_obj
-        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_ver0_blast
+        obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_ver0_hit_blast
         obj_char["hit_VFX_insert_function_argument"] = {obj_char,99,-576,0.8,0.75,0.75,0}
-        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_ver0_blast
+        obj_char["counter_VFX_insert_function"] = insert_VFX_game_scene_char_counter_ver0_hit_blast
         obj_char["counter_VFX_insert_function_argument"] = {obj_char,88,-815,1,0.9,0.9,0}
         obj_char["counter_SFX"] = nil
         obj_char["block_VFX_insert_function"] = nil

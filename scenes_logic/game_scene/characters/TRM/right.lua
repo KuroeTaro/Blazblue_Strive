@@ -133,6 +133,28 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["current_hurtstop_wiggle_x_animation"] = nil
     obj_char_game_scene_char_RP["current_hurtstop_wiggle_y_animation"] = nil
 
+    -- ground_smoke spawn pos
+        -- attack button(not need to record in obj_char)
+        -- move button(not need to record in obj_char)
+            -- jump
+            -- jump land
+            -- dash
+            -- dash stop
+            -- any special move
+        -- stand_block
+        -- crouch_block
+        -- stand_hurt_high/mid/low
+        -- crouch_hurt
+        -- launched/semi_launched_high/mid/low
+        -- launched_land/semi_launched_land_high/mid/low
+        -- no need
+            -- air_hurt_high/mid/low
+            -- air_launched/semi_launched_high/mid/low
+            -- air_launched_land/semi_launched_land_high/mid/low
+
+    obj_char_game_scene_char_RP["ground_smoke_spawn_anchor_pos"] = {}
+    obj_char_game_scene_char_RP["ground_smoke_spawn_anchor_pos"]["stand_hurt_high"] = {-70,-215}
+
     obj_char_game_scene_char_RP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_enclosing_anim"] = nil

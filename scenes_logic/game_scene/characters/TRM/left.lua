@@ -133,6 +133,29 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["current_hurtstop_wiggle_x_animation"] = nil
     obj_char_game_scene_char_LP["current_hurtstop_wiggle_y_animation"] = nil
 
+    -- ground_smoke spawn pos
+        -- attack button(not need to record in obj_char)
+        -- move button(not need to record in obj_char)
+            -- jump
+            -- jump land
+            -- dash
+            -- dash stop
+            -- any special move
+        -- stand_block
+        -- crouch_block
+        -- stand_hurt_high/mid/low
+        -- crouch_hurt
+        -- launched/semi_launched_high/mid/low
+        -- launched_land/semi_launched_land_high/mid/low
+        -- no need
+            -- air_hurt_high/mid/low
+            -- air_launched/semi_launched_high/mid/low
+            -- air_launched_land/semi_launched_land_high/mid/low
+
+    obj_char_game_scene_char_LP["ground_smoke_spawn_anchor_pos"] = {
+        {-70,-215}
+    }
+
     obj_char_game_scene_char_LP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_LP["camera_y_shake_anim"] = nil
     obj_char_game_scene_char_LP["camera_enclosing_anim"] = nil
@@ -373,13 +396,15 @@ function state_machine_char_game_scene_char_LP()
         ["overdrive"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             if test_input_sys_press(input["RC"]) and obj_char["f"] < 30 then
-                -- to overdrive RC
+                -- to OD_RC
                 
             elseif obj_char["f"] >= obj_char["current_animation_length"] then
                 -- to stand_idle
                 obj_char["idle_cancel"] = true -- 取消链
                 obj_char["current_animation"] = anim_char_LP_stand_idle
                 init_character_anim_with(obj_char,obj_char["current_animation"])
+                obj_char["f"] = 28
+                character_animator(obj_char,obj_char["current_animation"])
                 obj_char["state"] = "stand_idle"
                 state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
             end
