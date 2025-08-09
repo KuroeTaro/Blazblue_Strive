@@ -152,8 +152,9 @@ function load_game_scene_obj_char_RP()
             -- air_launched/semi_launched_high/mid/low
             -- air_launched_land/semi_launched_land_high/mid/low
 
-    obj_char_game_scene_char_RP["ground_smoke_spawn_anchor_pos"] = {}
-    obj_char_game_scene_char_RP["ground_smoke_spawn_anchor_pos"]["stand_hurt_high"] = {-70,-215}
+    obj_char_game_scene_char_RP["ground_smoke_spawn_anchor_pos"] = {
+        {-70,-215}
+    }
 
     obj_char_game_scene_char_RP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_RP["camera_y_shake_anim"] = nil
@@ -395,13 +396,15 @@ function state_machine_char_game_scene_char_RP()
         ["overdrive"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             if test_input_sys_press(input["RC"]) and obj_char["f"] < 30 then
-                -- to overdrive RC
+                -- to OD_RC
                 
             elseif obj_char["f"] >= obj_char["current_animation_length"] then
                 -- to stand_idle
                 obj_char["idle_cancel"] = true -- 取消链
                 obj_char["current_animation"] = anim_char_RP_stand_idle
                 init_character_anim_with(obj_char,obj_char["current_animation"])
+                obj_char["f"] = 28
+                character_animator(obj_char,obj_char["current_animation"])
                 obj_char["state"] = "stand_idle"
                 state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
             end
