@@ -152,9 +152,8 @@ function load_game_scene_obj_char_LP()
             -- air_launched/semi_launched_high/mid/low
             -- air_launched_land/semi_launched_land_high/mid/low
 
-    obj_char_game_scene_char_LP["ground_smoke_spawn_anchor_pos"] = {
-        {-70,-215}
-    }
+    obj_char_game_scene_char_LP["ground_smoke_spawn_anchor_pos"] = {}
+    obj_char_game_scene_char_LP["ground_smoke_spawn_anchor_pos"]["stand_hurt_high"] = {-70,-195}
 
     obj_char_game_scene_char_LP["camera_x_shake_anim"] = nil
     obj_char_game_scene_char_LP["camera_y_shake_anim"] = nil

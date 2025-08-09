@@ -15,4 +15,6 @@ image_data["HUD_punish"] = non_compress_module("asset/game_scene/VFX/HUD_VFX/PUI
 image_data["HUD_counter_ver0_2"] = non_compress_module("asset/game_scene/VFX/HUD_VFX/counter_VFX/ver0_2.png")
 image_data["HUD_counter_ver0_3"] = compress_module("asset/game_scene/VFX/HUD_VFX/counter_VFX/ver3.dds")
 
+image_data["stage_ground_smoke_horizontal_shot"] = compress_module("asset/game_scene/VFX/stage_VFX/ground_smoke/horizontal_shot.dds")
+
 love.thread.getChannel( 'image_8' ):push( image_data )

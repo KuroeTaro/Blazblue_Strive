@@ -1129,6 +1129,15 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         obj_char_other_side["anchor_pos"] = {206,520}
         obj_char_other_side["hurtstop_wiggle_x"] = 0
         obj_char_other_side["hurtstop_wiggle_y"] = 0
+
+        -- VFX
+        insert_VFX_game_scene_stage_ground_smoke_horizontal_shot(
+            obj_char_other_side,
+            obj_char_other_side["ground_smoke_spawn_anchor_pos"]["stand_hurt_high"][1],
+            obj_char_other_side["ground_smoke_spawn_anchor_pos"]["stand_hurt_high"][2],
+            1,1,1,0
+        )
+
     end
     res[2] = function() 
         -- state

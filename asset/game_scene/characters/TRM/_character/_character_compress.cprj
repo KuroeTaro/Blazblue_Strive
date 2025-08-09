@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROJECT>
-    <Image File="F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.png">
-        <Compression Setting="TRM_overdrive_badge" Enabled="False">
-            <Source>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.png</Source>
-            <Destination>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/overdrive_badge/results/TRM_overdrive_badge.DDS</Destination>
+    <Image File="F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/stage_VFX/ground_smoke/horizontal_shot.png">
+        <Compression Setting="horizontal_shot" Enabled="False">
+            <Source>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/stage_VFX/ground_smoke/horizontal_shot.png</Source>
+            <Destination>F:/LOVE/Blazblue_Strive/asset/game_scene/VFX/stage_VFX/ground_smoke/results/horizontal_shot.DDS</Destination>
             <fd>BC7</fd>
             <Quality>1</Quality>
             <WeightR>0.3086</WeightR>

@@ -358,8 +358,39 @@ function insert_VFX_game_scene_char_counter_ver0_hit_blast(obj_char,x,y,opacity,
     table.insert(obj_char["VFX_front_table"],obj)
 end
 
-function insert_VFX_game_scene_char_hurt_smoke(obj_char,x,y,opacity,sx,sy,r)
 
+
+
+function insert_VFX_game_scene_stage_ground_smoke_horizontal_shot(obj_char,x,y,opacity,sx,sy,r)
+    -- x y z opacity sx sy r f
+    local obj = {0, 0, 0, 1, 1, 1, 0, 0}
+    obj["life"] = 72
+    obj[1] = obj_char["x"] + obj_char[5]*(x)
+    obj[2] = obj_char["y"] + obj_char[6]*(y)
+    obj[3] = obj_char[3]
+    obj[4] = opacity
+    obj[5] = obj_char[5]*sx
+    obj[6] = obj_char[6]*sy
+    obj[7] = r
+    obj[8] = 0
+    obj["f"] = -1
+    obj["update"] = function(self)
+        self["f"] = self["f"] + 1
+        if self["f"] >= 2 then
+            self[8] = self[8] + 1
+            self["f"] = -1
+        end
+        self["life"] = self["life"] - 1
+    end
+    obj["draw"] = function(self)
+        local obj_camera = obj_stage_game_scene_camera
+        local image_sprite_sheet = image_sprite_sheet_VFX_stage_game_scene_ground_smoke_horizontal_shot
+        image_sprite_sheet["sprite_batch"]:clear()
+        draw_3d_image_sprite_batch(obj_camera,self,image_sprite_sheet,""..self[8].."")
+
+        love.graphics.draw(image_sprite_sheet["sprite_batch"])
+    end
+    table.insert(obj_char["VFX_back_table"],obj)
 end
 
 
