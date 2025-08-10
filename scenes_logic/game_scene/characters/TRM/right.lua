@@ -372,6 +372,14 @@ function state_machine_char_game_scene_char_RP()
         end,
 
         -- 待机状态
+            -- stand_idle为基本待机状态
+            -- 所有其他状待机态回到基本待机状态都需要额外通过一个回归状态
+            -- 但是stand_idle不需要 stand_idle进入其他待机状态的缓入会通过动画本身完成
+            -- 6_and_4_walk -> walk_to_stand_idle
+            -- 6_dash -> 6_dash_to_stand_idle
+                -- 4_dash不是待机状态
+            -- crouch -> crouch_to_stand_idle
+            -- jump_air -> jump_air_to_stand_idle
         ["stand_idle"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
@@ -396,6 +404,8 @@ function state_machine_char_game_scene_char_RP()
                 state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
             end
         end,
+
+        -- 非待机状态
         ["overdrive"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             if test_input_sys_press(input["RC"]) and obj_char["f"] < 30 then
