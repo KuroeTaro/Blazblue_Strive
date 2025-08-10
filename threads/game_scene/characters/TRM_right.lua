@@ -19,17 +19,17 @@ local image_data = {}
 --     image_data["overdrive_badge"][i] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM/"..(i-1)..".dds")
 -- end
 
-image_data["stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_stand_idle.dds")
+image_data["5_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5_stand_idle.dds")
 
 
-image_data["6_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6.dds")
-image_data["4_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4.dds")
-image_data["6_walk_stop_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk_stop.dds")
-image_data["4_walk_stop_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk_stop.dds")
+image_data["6_walk_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk.dds")
+image_data["4_walk_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk.dds")
+image_data["6_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk_to_stand_idle.dds")
+image_data["4_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk_to_stand_idle.dds")
 
 
 image_data["5P_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5P.dds")
-image_data["overdrive_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_overdrive.dds")
+image_data["burst_overdrive_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_burst_overdrive.dds")
 
 
 image_data["stand_hurt_high_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_stand_hurt_high.dds")

@@ -108,3 +108,39 @@ function set_show_info()
     local this_function = switch[DEBUG_INFO_SHOWS_STATE]
     if this_function then this_function() end
 end
+
+
+
+
+function update_character_frame_info(obj_char)
+    -- none startup active recovery
+    obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
+    if obj_char["move_state"] == "none" and obj_char_other_side["move_state"] == "recovery" then
+        obj_char["frame_adv"] = obj_char["frame_adv"] + 1
+    end
+    if obj_char["move_state"] == "none" then
+        return
+    end
+    if obj_char["game_speed"] == 0 or obj_char_other_side["game_speed"] == 0 then
+        return
+    end
+
+    -- obj_char["startup_frame"] = 0
+    -- obj_char["active_frame"] = 0
+    -- obj_char["recovery_frame"] = 0
+    -- obj_char["frame_adv"] = 0
+    if obj_char["move_state"] == "startup" then
+        obj_char["startup_frame"] = obj_char["startup_frame"] + 1
+    end
+    if obj_char["move_state"] == "active" 
+    and obj_char["state"] ~= "hitstop" 
+    and obj_char["state"] ~= "hurtstop" 
+    and obj_char["state"] ~= "blockstop" 
+    then
+        obj_char["active_frame"] = obj_char["active_frame"] + 1
+    end
+    if obj_char["move_state"] == "recovery" then
+        obj_char["recovery_frame"] = obj_char["recovery_frame"] + 1
+    end
+
+end

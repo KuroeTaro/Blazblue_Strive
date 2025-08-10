@@ -291,6 +291,25 @@ function love.draw()
 		love.graphics.print("Texture Memory: " .. stats.texturememory / 1024 / 1024 .. " MB", 250, 50)
 		love.graphics.print("Images Loaded: " .. stats.images, 250, 70)
 
+		-- 绘制角色帧数
+		if obj_char_game_scene_char_LP and obj_char_game_scene_char_RP then
+			update_character_frame_info(obj_char_game_scene_char_LP)
+			update_character_frame_info(obj_char_game_scene_char_RP)
+			love.graphics.print("LP_current_f : " .. obj_char_game_scene_char_LP["f"], 0, 300)
+			love.graphics.print("LP_startup   : " .. obj_char_game_scene_char_LP["startup_frame"], 0, 315)
+			love.graphics.print("LP_active    : " .. obj_char_game_scene_char_LP["active_frame"], 0, 330)
+			love.graphics.print("LP_recovery  : " .. obj_char_game_scene_char_LP["recovery_frame"], 0, 345)
+			love.graphics.print("LP_frame_adv : " .. obj_char_game_scene_char_LP["frame_adv"], 0, 360)
+			love.graphics.print("LP_move_state: " .. obj_char_game_scene_char_LP["move_state"], 0, 375)
+			love.graphics.print("RP_current_f : " .. obj_char_game_scene_char_RP["f"], 300, 300)
+			love.graphics.print("RP_startup   : " .. obj_char_game_scene_char_RP["startup_frame"], 300, 315)
+			love.graphics.print("RP_active    : " .. obj_char_game_scene_char_RP["active_frame"], 300, 330)
+			love.graphics.print("RP_recovery  : " .. obj_char_game_scene_char_RP["recovery_frame"], 300, 345)
+			love.graphics.print("RP_frame_adv : " .. obj_char_game_scene_char_RP["frame_adv"], 300, 360)
+			love.graphics.print("RP_move_state: " .. obj_char_game_scene_char_RP["move_state"], 300, 375)
+		end
+
+
 		love.graphics.setColor(1, 1, 1, 1)
 	end
 end

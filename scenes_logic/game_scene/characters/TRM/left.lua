@@ -19,13 +19,17 @@ function load_game_scene_obj_char_LP()
     obj_char_game_scene_char_LP["type"] = "character"
     obj_char_game_scene_char_LP["state"] = "before_ease_in"
     obj_char_game_scene_char_LP["state_cache"] = "none"
-    obj_char_game_scene_char_LP["sprite_sheet_state"] = "stand_idle"
+    obj_char_game_scene_char_LP["sprite_sheet_state"] = "5_stand_idle"
     obj_char_game_scene_char_LP["height_state"] = "stand" -- stand crouch air
     obj_char_game_scene_char_LP["hit_type_state"] = "none" -- none strike throw burst projectile
     obj_char_game_scene_char_LP["hit_guard_type_state"] = "none" -- none all low high
     obj_char_game_scene_char_LP["hit_counter_state"] = 0 -- 当前攻击counter等级 0 1 2 3
     obj_char_game_scene_char_LP["hurt_state"] = "idle" -- idle unblock punish counter GP parry
     obj_char_game_scene_char_LP["move_state"] = "none" -- none startup active recovery
+    obj_char_game_scene_char_LP["startup_frame"] = 0
+    obj_char_game_scene_char_LP["active_frame"] = 0
+    obj_char_game_scene_char_LP["recovery_frame"] = 0
+    obj_char_game_scene_char_LP["frame_adv"] = 0
 
     obj_char_game_scene_char_LP["input_sys_state"] = "none" -- none save load
     obj_char_game_scene_char_LP["input_sys_cache"] = {}
@@ -168,38 +172,38 @@ function order_load_game_scene_char_LP_frames(load_order)
         [1] = function()
             image_sprite_sheet_table_char_game_scene_LP = {}
 
-            image_sprite_sheet_table_char_game_scene_LP["stand_idle"] = 
+            image_sprite_sheet_table_char_game_scene_LP["5_stand_idle"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_stand_idle.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["stand_idle_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_5_stand_idle.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["5_stand_idle_sprite_batch"])
             )
-            image_sprite_sheet_table_char_game_scene_LP["6"] = 
+            image_sprite_sheet_table_char_game_scene_LP["6_walk"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_6.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["6_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_6_walk.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["6_walk_sprite_batch"])
             )
-            image_sprite_sheet_table_char_game_scene_LP["4"] = 
+            image_sprite_sheet_table_char_game_scene_LP["4_walk"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_4.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["4_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_4_walk.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["4_walk_sprite_batch"])
             )
-            image_sprite_sheet_table_char_game_scene_LP["6_walk_stop"] = 
+            image_sprite_sheet_table_char_game_scene_LP["6_walk_to_stand_idle"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_6_walk_stop.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["6_walk_stop_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_6_walk_to_stand_idle.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["6_walk_to_stand_idle_sprite_batch"])
             )
-            image_sprite_sheet_table_char_game_scene_LP["4_walk_stop"] = 
+            image_sprite_sheet_table_char_game_scene_LP["4_walk_to_stand_idle"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_4_walk_stop.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["4_walk_stop_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_4_walk_to_stand_idle.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["4_walk_to_stand_idle_sprite_batch"])
             )
 
 
 
-            image_sprite_sheet_table_char_game_scene_LP["overdrive"] = 
+            image_sprite_sheet_table_char_game_scene_LP["burst_overdrive"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_overdrive.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_burst_overdrive.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["burst_overdrive_sprite_batch"])
             )
             image_sprite_sheet_table_char_game_scene_LP["5P"] = 
             sprite_sheet_load(
@@ -252,8 +256,8 @@ function load_game_scene_anim_char_LP()
     -- 行走动画
     anim_char_LP_6_walk = load_game_scene_anim_char_TRM_6(obj_char)
     anim_char_LP_4_walk = load_game_scene_anim_char_TRM_4(obj_char)
-    anim_char_LP_6_walk_stop = load_game_scene_anim_char_TRM_6_walk_stop(obj_char)
-    anim_char_LP_4_walk_stop = load_game_scene_anim_char_TRM_4_walk_stop(obj_char)
+    anim_char_LP_6_walk_to_stand_idle = load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
+    anim_char_LP_4_walk_to_stand_idle = load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
     -- overdrive启动动画
     anim_char_LP_overdrive = load_game_scene_anim_char_TRM_overdrive(obj_char)
     -- 拳脚动画
@@ -368,6 +372,10 @@ function state_machine_char_game_scene_char_LP()
         end,
 
         -- 待机状态
+            -- stand_idle为基本待机状态
+            -- 所有其他状待机态回到基本待机状态都需要额外通过一个回归状态
+            -- walk -> walk_to_stand_idle
+            -- crouch -> crouch_up ()
         ["stand_idle"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
@@ -376,14 +384,14 @@ function state_machine_char_game_scene_char_LP()
             common_game_scene_check_6_and_4_move(obj_char)
             state_gate_game_scene_char_LP_from_6_and_4_walk(input,obj_char)
         end,
-        ["walk_stop"] = function()
+        ["walk_to_stand_idle"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
             if obj_char["f"] >= obj_char["current_animation_length"] then
                 obj_char["current_animation"] = anim_char_LP_stand_idle
-                if obj_char["sprite_sheet_state"] == "6_walk_stop" then
+                if obj_char["sprite_sheet_state"] == "6_walk_to_stand_idle" then
                     init_character_anim_with(obj_char,obj_char["current_animation"])
-                elseif obj_char["sprite_sheet_state"] == "4_walk_stop" then
+                elseif obj_char["sprite_sheet_state"] == "4_walk_to_stand_idle" then
                     init_character_anim_with(obj_char,obj_char["current_animation"])
                     obj_char["f"] = 20
                     character_animator(obj_char,obj_char["current_animation"])
@@ -392,6 +400,8 @@ function state_machine_char_game_scene_char_LP()
                 state_gate_game_scene_char_LP_from_stand_idle(input,obj_char)
             end
         end,
+
+        -- 非待机状态
         ["overdrive"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             if test_input_sys_press(input["RC"]) and obj_char["f"] < 30 then
@@ -945,15 +955,15 @@ function state_gate_game_scene_char_LP_from_6_and_4_walk(input,obj_char)
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "5P"
     elseif common_game_scene_get_input_direction(obj_char) == 5 then
-        -- to 6_walk_stop or 4_walk_stop
+        -- to 6_walk_to_stand_idle or 4_walk_to_stand_idle
         obj_char["idle_cancel"] = true
-        if obj_char["sprite_sheet_state"] == "4" then
-            obj_char["current_animation"] = anim_char_LP_4_walk_stop
-        elseif obj_char["sprite_sheet_state"] == "6" then
-            obj_char["current_animation"] = anim_char_LP_6_walk_stop
+        if obj_char["sprite_sheet_state"] == "4_walk" then
+            obj_char["current_animation"] = anim_char_LP_4_walk_to_stand_idle
+        elseif obj_char["sprite_sheet_state"] == "6_walk" then
+            obj_char["current_animation"] = anim_char_LP_6_walk_to_stand_idle
         end
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["velocity"] = {0,0}
-        obj_char["state"] = "walk_stop"
+        obj_char["state"] = "walk_to_stand_idle"
     end
 end

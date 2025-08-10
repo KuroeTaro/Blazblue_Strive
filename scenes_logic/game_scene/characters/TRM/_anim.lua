@@ -93,7 +93,7 @@ function load_game_scene_anim_char_TRM_stand_idle(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "stand_idle"
+        obj_char["sprite_sheet_state"] = "5_stand_idle"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -148,7 +148,7 @@ function load_game_scene_anim_char_TRM_6(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "6"
+        obj_char["sprite_sheet_state"] = "6_walk"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -287,7 +287,7 @@ function load_game_scene_anim_char_TRM_4(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "4"
+        obj_char["sprite_sheet_state"] = "4_walk"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -421,11 +421,11 @@ function load_game_scene_anim_char_TRM_4(obj_char)
     return res
 end
 
-function load_game_scene_anim_char_TRM_6_walk_stop(obj_char)
+function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "6_walk_stop"
+        obj_char["sprite_sheet_state"] = "6_walk_to_stand_idle"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -475,17 +475,21 @@ function load_game_scene_anim_char_TRM_6_walk_stop(obj_char)
     return res
 end
 
-function load_game_scene_anim_char_TRM_4_walk_stop(obj_char)
+function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "4_walk_stop"
+        obj_char["sprite_sheet_state"] = "4_walk_to_stand_idle"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hit_counter_state"] = 0 -- 当前攻击counter等级 0 1 2 3
         obj_char["hurt_state"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "none" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        obj_char["frame_adv"] = 0
 
         obj_char["current_animation_length"] = 8 -- 如果为0则是循环动画
 
@@ -544,7 +548,7 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         elseif obj_char["overdrive"][1] < 0 then
             obj_char["overdrive"][1] = 0
         end
-        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] > 3 then
+        if obj_char_other_side["game_speed_abnormal_realtime_countdown"] == 0 and obj_char["f"] >= 4 then
             obj_char["move_state"] = "recovery"
         end
     end
@@ -557,13 +561,17 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = "overdrive"
+        obj_char["sprite_sheet_state"] = "burst_overdrive"
         obj_char["height_state"] = "stand"
         obj_char["hit_type_state"] = "none"
         obj_char["hit_guard_type_state"] = "none" -- none all low high
         obj_char["hit_counter_state"] = 0
         obj_char["hurt_state"] = "idle" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        obj_char["frame_adv"] = 0
 
         obj_char["current_animation_length"] = 70 -- 如果为0则是循环动画
 
@@ -804,8 +812,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
     local overdrive_add = 0.05
     local heat_add = 0.05
     local ability_add = 0.05
-    local friction = 5
+    local friction = 4
     local side = obj_char["player_side"]
+    local obj_char_other_side = common_game_scene_change_character(side)
     local function add_heat_ability_overdrive()
         if obj_char["overdrive"][1] < obj_char["overdrive"][2] then
             obj_char["overdrive"][1] = 
@@ -837,6 +846,12 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["hit_counter_state"] = 1 -- 当前攻击counter等级 0 1 2 3
         obj_char["hurt_state"] = "counter" -- idle unblock punish counter GP parry
         obj_char["move_state"] = "startup" -- none startup active recovery
+        obj_char["startup_frame"] = 0
+        obj_char["active_frame"] = 0
+        obj_char["recovery_frame"] = 0
+        obj_char["frame_adv"] = 0
+        obj_char_other_side["frame_adv"] = 0
+
         if side == "L" then
             obj_char["stand_hurt_animation"] = anim_char_LP_5P_stand_hurt_high
             obj_char["stand_block_animation"] = nil
@@ -1011,7 +1026,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
     local ability_add = 0.05
     local side = obj_char["player_side"]
     local obj_char_other_side = common_game_scene_change_character(side)
-    local other_side_hurtbox_data = common_game_scene_change_character_hurtbox(side)
+    local hurtbox_data_other_side = common_game_scene_change_character_hurtbox(side)
     local function add_heat_ability_overdrive()
         if obj_char_other_side["overdrive"][1] < obj_char_other_side["overdrive"][2] then
             obj_char_other_side["overdrive"][1] = 
@@ -1045,7 +1060,11 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         obj_char_other_side["hit_guard_type_state"] = "none" -- none all low high
         obj_char_other_side["hit_counter_state"] = 0 -- 当前攻击counter等级 0 1 2 3
         obj_char_other_side["hurt_state"] = "unblock" -- idle unblock punish counter GP parry
-        obj_char_other_side["move_state"] = "none" -- none startup active recovery
+        obj_char_other_side["move_state"] = "recovery" -- none startup active recovery
+        obj_char_other_side["startup_frame"] = 0
+        obj_char_other_side["active_frame"] = 0
+        obj_char_other_side["recovery_frame"] = 0
+        obj_char_other_side["frame_adv"] = 0
 
         obj_char_other_side["current_animation_length"] = 13
 
@@ -1122,7 +1141,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         -- collide
         obj_char_other_side["pushbox"] = {0, -185, 130, 370}
         obj_char_other_side["hitbox_table"] = {}
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["stand_hurt_high"][0]
 
         -- draw_correction
         obj_char_other_side[8] = 0
@@ -1144,7 +1163,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][2]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["stand_hurt_high"][2]
         
         -- draw_correction
         obj_char_other_side[8] = 2
@@ -1158,7 +1177,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][1]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["stand_hurt_high"][1]
 
         -- draw_correction
         obj_char_other_side[8] = 1
@@ -1168,7 +1187,7 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         add_heat_ability_overdrive()
 
         -- collide
-        obj_char_other_side["hurtbox_table"] = other_side_hurtbox_data["stand_hurt_high"][0]
+        obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["stand_hurt_high"][0]
 
         -- draw_correction
         obj_char_other_side[8] = 0
