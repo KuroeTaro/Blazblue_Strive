@@ -200,10 +200,10 @@ function order_load_game_scene_char_LP_frames(load_order)
 
 
 
-            image_sprite_sheet_table_char_game_scene_LP["burst_overdrive"] = 
+            image_sprite_sheet_table_char_game_scene_LP["burst_overdrive_RC"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_burst_overdrive.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["burst_overdrive_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_burst_overdrive_RC.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["burst_overdrive_RC_sprite_batch"])
             )
             image_sprite_sheet_table_char_game_scene_LP["5P"] = 
             sprite_sheet_load(

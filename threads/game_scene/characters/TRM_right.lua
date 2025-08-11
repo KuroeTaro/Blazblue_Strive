@@ -29,7 +29,7 @@ image_data["4_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_sc
 
 
 image_data["5P_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5P.dds")
-image_data["burst_overdrive_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_burst_overdrive.dds")
+image_data["burst_overdrive_RC_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_burst_overdrive_RC.dds")
 
 
 image_data["stand_hurt_high_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_stand_hurt_high.dds")
