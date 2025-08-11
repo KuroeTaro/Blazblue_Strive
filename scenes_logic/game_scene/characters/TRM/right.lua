@@ -312,10 +312,6 @@ function state_machine_char_game_scene_char_RP()
     --     "RC","Dash","Burst","UA"
     -- }
 
-    -- sp + 拉前/回中 + p 扔球
-    -- sp + 拉前/回中 + k 翻滚
-    -- sp + 拉前/回中 + s 拔枪
-    -- sp + 拉下/下前 + s 双手构/蛇刹
     -- sp + luncher 普通投
 
     local input = INPUT_SYS_CURRENT_COMMAND_STATE["R"]
@@ -379,7 +375,9 @@ function state_machine_char_game_scene_char_RP()
             -- 6_dash -> 6_dash_to_stand_idle
                 -- 4_dash不是待机状态
             -- crouch -> crouch_to_stand_idle
-            -- jump_air -> jump_air_to_stand_idle
+            -- air -> air_to_stand_idle
+                -- pre_jump 不是idle(不能拉防)
+                -- air是(可以拉防)
         ["stand_idle"] = function()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
