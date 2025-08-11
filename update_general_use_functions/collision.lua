@@ -178,7 +178,7 @@ function strike_hurtbox_test(hit_obj,hurt_obj)
     for i=1,#hit_obj["hitbox_table"] do
         local current_hitbox = collision_box_to_real_world_box(hit_obj,"hitbox",hit_obj["hitbox_table"][i])
         for j=1,#hurt_obj["hurtbox_table"] do
-            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][i])
+            local current_hurtbox = collision_box_to_real_world_box(hurt_obj,"hurtbox",hurt_obj["hurtbox_table"][j])
             if collision_box_aabb_detection(current_hitbox,current_hurtbox) then
                 return true
             end
@@ -199,20 +199,12 @@ function strike_hitbox_clash_test()
 
 end
 
--- 总流程
-    -- 获得输入 更新角色 状态 速度 和 碰撞盒
-    -- 存储角色位置速度
-    -- loop * 10
-        -- 角色更新位置 1/10
-            -- 如果为第十次 使用存储角色位置速度
-        -- 检测pushbox 更新Y位置
-        -- 检测pushbox 更新X位置 static_relocate_x
-        -- 检测pushbox 更新X位置 dynamic_relocate_x
-        -- 检测打击受击盒 
-            -- 如果命中 更新角色 状态 速度 和 碰撞盒 跳出loop
-    -- 检测pushbox 更新Y位置
-    -- 检测pushbox 更新X位置 static_relocate_x
-    -- 检测pushbox 更新X位置 dynamic_relocate_x
+
+
+
+
+
+
 
 
 
