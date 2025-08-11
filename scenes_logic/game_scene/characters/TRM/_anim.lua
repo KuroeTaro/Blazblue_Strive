@@ -421,11 +421,11 @@ function load_game_scene_anim_char_TRM_4(obj_char)
     return res
 end
 
-function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
+function load_game_scene_anim_char_TRM_6_walk_stop(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "6_walk_to_stand_idle"
+        obj_char["sprite_sheet_state"] = "6_walk_stop"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -475,11 +475,11 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
     return res
 end
 
-function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
+function load_game_scene_anim_char_TRM_4_walk_stop(obj_char)
     local res = {}
     res[0] = function() 
         -- state
-        obj_char["sprite_sheet_state"] = "4_walk_to_stand_idle"
+        obj_char["sprite_sheet_state"] = "4_walk_stop"
         obj_char["height_state"] = "stand" -- stand crouch air
         obj_char["hit_type_state"] = "none" -- none strike throw burst
         obj_char["hit_guard_type_state"] = "none" -- none all low high
