@@ -4,37 +4,34 @@ local compress_module = image_module.newCompressedData
 local non_compress_module = love.image.newImageData
 local image_data = {}
 
--- image_data["stand_idle"] = {}
--- for i = 1,17 do
---     image_data["stand_idle"][i] = compress_module("asset/game_scene/characters/TRM/stand_idle/"..(i-1)..".dds")
--- end
-
--- image_data["overdrive"] = {}
--- for i = 1,15 do
---     image_data["overdrive"][i] = compress_module("asset/game_scene/characters/TRM/overdrive/"..(i-1)..".dds")
--- end
-
--- image_data["overdrive_badge"] = {}
--- for i = 1,70 do
---     image_data["overdrive_badge"][i] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM/"..(i-1)..".dds")
--- end
-
-image_data["5_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5_stand_idle.dds")
-
-
-image_data["6_walk_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk.dds")
+-- 待机状态
+image_data["2_crouch_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_2_crouch.dds")
 image_data["4_walk_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk.dds")
-image_data["6_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk_to_stand_idle.dds")
 image_data["4_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_4_walk_to_stand_idle.dds")
+image_data["5_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5_stand_idle.dds")
+image_data["6_walk_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk.dds")
+image_data["6_walk_to_stand_idle_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_6_walk_to_stand_idle.dds")
+image_data["8_jump_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_8_jump.dds")
+image_data["8_pre_jump_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_8_pre_jump.dds")
 
-
-image_data["5P_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5P.dds")
+-- 通用机制
 image_data["burst_overdrive_RC_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_burst_overdrive_RC.dds")
 
+-- 拳脚
+image_data["5P_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_5P.dds")
 
+-- 必杀技
+
+-- 超必杀技
+
+-- 起身动画
+
+-- 受伤类
 image_data["stand_hurt_high_sprite_batch"] = compress_module("asset/game_scene/characters/TRM/_character/TRM_stand_hurt_high.dds")
 
+-- 受身类
 
+-- 特效类
 image_data["5P_whiff_VFX_sprite_batch"] = compress_module("asset/game_scene/VFX/whiff_VFX/TRM/5P.dds")
 image_data["overdrive_badge_sprite_batch"] = compress_module("asset/game_scene/VFX/overdrive_badge/TRM_overdrive_badge.dds")
 
