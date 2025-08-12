@@ -430,15 +430,17 @@ end
 
 function common_game_scene_counter_ver1(hit_obj,hurt_obj)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_obj)
-    hurt_obj["hit_hurt_block_slowdown_countdown"] = 11
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 12
+    hurt_obj["game_speed_subframe"] = 0
 end
 
 function common_game_scene_counter_ver2(hit_obj,hurt_obj)
     insert_VFX_HUD_game_scene_counter_ver0_2(hit_obj)
-    hit_obj["hit_hurt_blockstop_countdown"] = 21
+    hit_obj["hit_hurt_blockstop_countdown"] = 22
     hit_obj["hit_hurt_block_slowdown_countdown"] = 0
-    hurt_obj["hit_hurt_block_slowdown_countdown"] = 25
-    hurt_obj["hit_hurt_blockstop_countdown"] = 21
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 26
+    hurt_obj["hit_hurt_blockstop_countdown"] = 22
+    hurt_obj["game_speed_subframe"] = 0
 end
 
 function common_game_scene_counter_ver3(hit_obj,hurt_obj)
@@ -448,10 +450,10 @@ function common_game_scene_counter_ver3(hit_obj,hurt_obj)
     anim_camera_point_linear_game_scene_camera_enclosing = hit_obj["camera_enclosing_anim"]
     init_point_linear_anim_with(obj_camera,anim_camera_point_linear_game_scene_camera_enclosing)
     obj_camera["enclose_position_offset"] = {0, 80, 100}
-    hit_obj["hit_hurt_blockstop_countdown"] = 31
+    hit_obj["hit_hurt_blockstop_countdown"] = 32
     hit_obj["hit_hurt_block_slowdown_countdown"] = 0
-    hurt_obj["hit_hurt_block_slowdown_countdown"] = 35
-    hurt_obj["hit_hurt_blockstop_countdown"] = 31
+    hurt_obj["hit_hurt_block_slowdown_countdown"] = 36
+    hurt_obj["hit_hurt_blockstop_countdown"] = 32
 end
 
 

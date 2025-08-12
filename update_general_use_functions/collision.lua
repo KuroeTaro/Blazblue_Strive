@@ -19,7 +19,6 @@ function collision_box_to_real_world_box(obj,box_name,box)
         }
         return res
     end
-
 end
 
 function collision_box_aabb_detection(box_a,box_b)
@@ -37,7 +36,6 @@ function collision_box_aabb_detection(box_a,box_b)
     local y_overlap = ( box_a_T <= box_b_B and box_b_T <= box_a_B )
 
     return (x_overlap and y_overlap)    
-
 end
 
 
@@ -47,9 +45,8 @@ end
 function pushbox_relocate_y(obj)
     local box = collision_box_to_real_world_box(obj,"pushbox")
     local stage_B_collision = 365
-    local box_B_collision = box[2]+box[4]/2
+    local box_B_collision = box[2]+box[4]/2+obj["collision_test_ground_height_offset"]
     obj["y"] = math.min(box_B_collision,stage_B_collision)
-
 end
 
 function pushbox_stage_relocate_x(obj)
@@ -65,7 +62,6 @@ function pushbox_stage_relocate_x(obj)
     else
         obj["collision_move_available"] = {1,1}
     end
-    
 end
 
 function pushbox_state_relocate_in_character_x(obj_char_LP,obj_char_RP)
@@ -154,7 +150,6 @@ function pushbox_dynamic_normal_aabb_relocate_x(obj_L,obj_R)
                 else
                     branch_flag = 0
                 end
-                
             end
             if obj_L["y"] > obj_R["y"] or branch_flag == 1 then
                 obj_R["x"] = box_L[1]-box_L[3]/2-box_R[3]/2
@@ -163,7 +158,6 @@ function pushbox_dynamic_normal_aabb_relocate_x(obj_L,obj_R)
                 obj_L["x"] = box_R[1]-box_R[3]/2-box_L[3]/2
 
             end
-
         end
     end
 end

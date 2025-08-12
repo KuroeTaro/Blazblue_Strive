@@ -162,6 +162,9 @@ function update_game_scene_main_training()
             -- 更新角色
             update_game_scene_char()
 
+            -- 更新角色重力方向速度
+            update_game_scene_gravity()
+
             -- 更新飞行道具
             for i = #char_LP["projectile_table"], 1, -1 do -- 反向遍历，便于删除元素
                 local object = char_LP["projectile_table"][i]
@@ -392,6 +395,30 @@ end
 
 
 
+function update_game_scene_gravity()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+
+    if char_LP["y"] == 365 then
+        char_LP["velocity"][2] = math.min(char_LP["velocity"][2],0)
+    elseif char_LP["y"] > 365 then
+        char_LP["y"] = 365
+        char_LP["velocity"][2] = 0
+    else
+        char_LP["velocity"][2] = char_LP["velocity"][2] + char_LP["gravity"]*char_LP["gravity_correction"]
+    end
+
+    if char_RP["y"] == 365 then
+        char_RP["velocity"][2] = math.min(char_RP["velocity"][2],0)
+    elseif char_RP["y"] > 365 then
+        char_RP["y"] = 365
+        char_RP["velocity"][2] = 0
+    else
+        char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
+    end
+
+end
+
 function update_game_scene_friction()
     local char_LP = obj_char_game_scene_char_LP
     local char_RP = obj_char_game_scene_char_RP
@@ -403,20 +430,21 @@ function update_game_scene_friction()
     char_RP["velocity_debug"][1] = char_RP["velocity"][1]
     char_RP["velocity_debug"][2] = char_RP["velocity"][2]
     if char_LP["game_speed"] ~= 0 and char_LP["game_speed_subframe"] > char_LP["game_speed"] then
-        char_LP["velocity"][1] = char_LP["velocity"][1] + char_LP["acceleration"][1] - (char_LP["velocity"][1] / char_LP["friction"])
+        char_LP["velocity"][1] = char_LP["velocity"][1] + char_LP["ground_dash_acceleration"] - (char_LP["velocity"][1] / char_LP["friction"])
         char_LP["game_speed_subframe"] = 1
         if math.abs(char_LP["velocity"][1]) < 0.001 then
             char_LP["velocity"][1] = 0
         end
     end
     if char_RP["game_speed"] ~= 0 and char_RP["game_speed_subframe"] > char_RP["game_speed"] then
-        char_RP["velocity"][1] = char_RP["velocity"][1] + char_RP["acceleration"][1] - (char_RP["velocity"][1] / char_RP["friction"])
+        char_RP["velocity"][1] = char_RP["velocity"][1] + char_RP["ground_dash_acceleration"] - (char_RP["velocity"][1] / char_RP["friction"])
         char_RP["game_speed_subframe"] = 1
         if math.abs(char_RP["velocity"][1]) < 0.001 then
             char_RP["velocity"][1] = 0
         end
     end
 end
+
 function update_game_scene_HUD()
     update_game_scene_HUD_overdrive_timer(
         obj_char_game_scene_char_LP,

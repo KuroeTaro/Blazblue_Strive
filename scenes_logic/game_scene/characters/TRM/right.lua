@@ -77,9 +77,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["velocity"] = {0,0}
     obj_char_game_scene_char_RP["velocity_debug"] = {0,0}
     obj_char_game_scene_char_RP["velocity_cache"] = {0,0}
-    obj_char_game_scene_char_RP["acceleration"] = {0,0}
-    obj_char_game_scene_char_RP["gravity"] = 9.8
-    obj_char_game_scene_char_RP["friction"] = 1
+    obj_char_game_scene_char_RP["gravity"] = 2.0
+    obj_char_game_scene_char_RP["ground_dash_acceleration"] = 0 -- 地面奔跑加速运动时用于对抗阻力的地面加速度
+    obj_char_game_scene_char_RP["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
+
     obj_char_game_scene_char_RP["health"] = {11500, 11500, 11500, "fade_off"}
     obj_char_game_scene_char_RP["heat"] = {0.0, 200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_RP["ability"] = {600.0, 600.0} -- 0.0 - 600.0
@@ -88,9 +89,10 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["overdrive_drain_speed"] = 24
     obj_char_game_scene_char_RP["risk"] = {0.0, 300.0}-- 0.0 - 300.0
     obj_char_game_scene_char_RP["positive_bouns"] = {0.0, 600.0} -- 0.0 - 600.0
-    obj_char_game_scene_char_RP["hurt_horizontal_velocity_correction"] = 1
-    obj_char_game_scene_char_RP["hurt_gravity_correction"] = 1
-    obj_char_game_scene_char_RP["hurt_damage_correction"] = 1
+
+    obj_char_game_scene_char_RP["horizontal_velocity_correction"] = 1
+    obj_char_game_scene_char_RP["gravity_correction"] = 1
+    obj_char_game_scene_char_RP["damage_correction"] = 1
 
     -- game_speed
     obj_char_game_scene_char_RP["game_speed"] = 1
@@ -102,6 +104,7 @@ function load_game_scene_obj_char_RP()
     -- collide
     obj_char_game_scene_char_RP["pushbox"] = {0, -185, 130, 370}
     obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
+    obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
     obj_char_game_scene_char_RP["hitbox_table"] = {}
     obj_char_game_scene_char_RP["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
 
