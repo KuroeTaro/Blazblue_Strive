@@ -80,7 +80,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["gravity"] = 2.0
     obj_char_game_scene_char_RP["ground_dash_acceleration"] = 0 -- 地面奔跑加速运动时用于对抗阻力的地面加速度
     obj_char_game_scene_char_RP["friction"] = 1 -- 包括地面移动和空中dash的水平阻力
-
+    
     obj_char_game_scene_char_RP["health"] = {11500, 11500, 11500, "fade_off"}
     obj_char_game_scene_char_RP["heat"] = {0.0, 200.0} -- 0.0 - 200.0
     obj_char_game_scene_char_RP["ability"] = {600.0, 600.0} -- 0.0 - 600.0
@@ -90,7 +90,7 @@ function load_game_scene_obj_char_RP()
     obj_char_game_scene_char_RP["risk"] = {0.0, 300.0}-- 0.0 - 300.0
     obj_char_game_scene_char_RP["positive_bouns"] = {0.0, 600.0} -- 0.0 - 600.0
 
-    obj_char_game_scene_char_RP["horizontal_velocity_correction"] = 1
+    obj_char_game_scene_char_RP["velocity_x_correction"] = 1
     obj_char_game_scene_char_RP["gravity_correction"] = 1
     obj_char_game_scene_char_RP["damage_correction"] = 1
 
@@ -103,10 +103,10 @@ function load_game_scene_obj_char_RP()
 
     -- collide
     obj_char_game_scene_char_RP["pushbox"] = {0, -185, 130, 370}
-    obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
-    obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
     obj_char_game_scene_char_RP["hitbox_table"] = {}
     obj_char_game_scene_char_RP["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+    obj_char_game_scene_char_RP["collision_move_available"] = {1,1}
+    obj_char_game_scene_char_RP["collision_test_ground_height_offset"] = 0 -- 用于检测和地面碰撞的
 
     -- sub_obj
     obj_char_game_scene_char_RP["projectile_table"] = {}
@@ -203,10 +203,10 @@ function order_load_game_scene_char_RP_frames(load_order)
 
 
 
-            image_sprite_sheet_table_char_game_scene_RP["burst_overdrive_RC"] = 
+            image_sprite_sheet_table_char_game_scene_RP["burst_overdrive_rc"] = 
             sprite_sheet_load(
-                "asset/game_scene/characters/TRM/_character/TRM_burst_overdrive_RC.json",
-                love.graphics.newImage(PLAYER_ASSET_DATA["burst_overdrive_RC_sprite_batch"])
+                "asset/game_scene/characters/TRM/_character/TRM_burst_overdrive_rc.json",
+                love.graphics.newImage(PLAYER_ASSET_DATA["burst_overdrive_rc_sprite_batch"])
             )
             image_sprite_sheet_table_char_game_scene_RP["5P"] = 
             sprite_sheet_load(
@@ -255,19 +255,19 @@ end
 function load_game_scene_anim_char_RP()
     local obj_char = obj_char_game_scene_char_RP
     -- 站姿待机动画
-    anim_char_RP_stand_idle = load_game_scene_anim_char_TRM_stand_idle(obj_char)    
+    anim_char_RP_5_stand_idle = load_game_scene_anim_char_TRM_5_stand_idle(obj_char)    
     -- 行走动画
-    anim_char_RP_6_walk = load_game_scene_anim_char_TRM_6(obj_char)
-    anim_char_RP_4_walk = load_game_scene_anim_char_TRM_4(obj_char)
+    anim_char_RP_6_walk = load_game_scene_anim_char_TRM_6_walk(obj_char)
+    anim_char_RP_4_walk = load_game_scene_anim_char_TRM_4_walk(obj_char)
     anim_char_RP_6_walk_to_stand_idle = load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
     anim_char_RP_4_walk_to_stand_idle = load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
     -- overdrive启动动画
-    anim_char_RP_overdrive = load_game_scene_anim_char_TRM_overdrive(obj_char)
+    anim_char_RP_burst_overdrive_ground = load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
     -- 拳脚动画
     anim_char_RP_5P_stand_hurt_high = load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
     anim_char_RP_5P = load_game_scene_anim_char_TRM_5P(obj_char)
 
-    obj_char["current_animation"] = anim_char_RP_stand_idle
+    obj_char["current_animation"] = anim_char_RP_5_stand_idle
 
 end
 
@@ -350,7 +350,7 @@ function state_machine_char_game_scene_char_RP()
             if obj_char["f"] >= obj_char["current_animation_length"] then
                 if obj_char["height_state"] == "stand" then
                     -- to idle
-                    obj_char["current_animation"] = anim_char_RP_stand_idle
+                    obj_char["current_animation"] = anim_char_RP_5_stand_idle
                     init_character_anim_with(obj_char,obj_char["current_animation"])
                     obj_char["state"] = "stand_idle"
                     state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
@@ -362,7 +362,7 @@ function state_machine_char_game_scene_char_RP()
             if obj_char["f"] >= obj_char["current_animation_length"] then
                 if obj_char["height_state"] == "stand" then
                     -- to idle
-                    obj_char["current_animation"] = anim_char_RP_stand_idle
+                    obj_char["current_animation"] = anim_char_RP_5_stand_idle
                     init_character_anim_with(obj_char,obj_char["current_animation"])
                     obj_char["state"] = "stand_idle"
                     state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
@@ -393,7 +393,7 @@ function state_machine_char_game_scene_char_RP()
             character_animator(obj_char,obj_char["current_animation"])
             state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
             if obj_char["f"] >= obj_char["current_animation_length"] then
-                obj_char["current_animation"] = anim_char_RP_stand_idle
+                obj_char["current_animation"] = anim_char_RP_5_stand_idle
                 if obj_char["sprite_sheet_state"] == "6_walk_to_stand_idle" then
                     init_character_anim_with(obj_char,obj_char["current_animation"])
                 elseif obj_char["sprite_sheet_state"] == "4_walk_to_stand_idle" then
@@ -415,7 +415,7 @@ function state_machine_char_game_scene_char_RP()
             elseif obj_char["f"] >= obj_char["current_animation_length"] then
                 -- to stand_idle
                 obj_char["idle_cancel"] = true -- 取消链
-                obj_char["current_animation"] = anim_char_RP_stand_idle
+                obj_char["current_animation"] = anim_char_RP_5_stand_idle
                 init_character_anim_with(obj_char,obj_char["current_animation"])
                 obj_char["f"] = 28
                 character_animator(obj_char,obj_char["current_animation"])
@@ -428,7 +428,7 @@ function state_machine_char_game_scene_char_RP()
             
             if obj_char["f"] >= obj_char["current_animation_length"] then
                 -- to stand_idle
-                obj_char["current_animation"] = anim_char_RP_stand_idle
+                obj_char["current_animation"] = anim_char_RP_5_stand_idle
                 init_character_anim_with(obj_char,obj_char["current_animation"])
                 obj_char["state"] = "stand_idle"
                 state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
@@ -919,7 +919,7 @@ function state_gate_game_scene_char_RP_from_stand_idle(input,obj_char)
     elseif test_input_sys_press(input["Burst"]) and obj_char["overdrive"][1] == obj_char["overdrive"][2] then
         -- to over_drive
         obj_char["idle_cancel"] = false
-        obj_char["current_animation"] = anim_char_RP_overdrive
+        obj_char["current_animation"] = anim_char_RP_burst_overdrive_ground
         init_character_anim_with(obj_char,obj_char["current_animation"])
         common_game_scene_overdrive_load_camera_anim(obj_char)
         common_game_scene_nil_load_camera_enclose_anim(obj_char)
@@ -950,7 +950,7 @@ function state_gate_game_scene_char_RP_from_6_and_4_walk(input,obj_char)
     elseif test_input_sys_press(input["Burst"]) and obj_char["overdrive"][1] == obj_char["overdrive"][2] then
         -- to over_drive
         obj_char["idle_cancel"] = false
-        obj_char["current_animation"] = anim_char_RP_overdrive
+        obj_char["current_animation"] = anim_char_RP_burst_overdrive_ground
         init_character_anim_with(obj_char,obj_char["current_animation"])
         obj_char["state"] = "overdrive"
     elseif test_input_sys_press(input["P"]) then

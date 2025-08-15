@@ -191,7 +191,7 @@ function update_game_scene_main_training()
                 -- 更新角色和飞行道具位置
                 if char_LP["game_speed"] ~= 0 then
                     -- 角色更新位置 1/10
-                    char_LP["x"] = char_LP["x"] + char_LP_velocity[1]/(16* char_LP["game_speed"])
+                    char_LP["x"] = char_LP["x"] + char_LP_velocity[1]*char_LP["velocity_x_correction"]/(16* char_LP["game_speed"])
                     char_LP["y"] = char_LP["y"] + char_LP_velocity[2]/(16* char_LP["game_speed"])
 
                     -- 飞行道具更新位置 1/10
@@ -203,7 +203,7 @@ function update_game_scene_main_training()
                 end
                 if char_RP["game_speed"] ~= 0 then
                     -- 角色更新位置 1/10
-                    char_RP["x"] = char_RP["x"] + char_RP_velocity[1]/(16* char_RP["game_speed"])
+                    char_RP["x"] = char_RP["x"] + char_RP_velocity[1]*char_RP["velocity_x_correction"]/(16* char_RP["game_speed"])
                     char_RP["y"] = char_RP["y"] + char_RP_velocity[2]/(16* char_RP["game_speed"])
 
                     -- 飞行道具更新位置 1/10

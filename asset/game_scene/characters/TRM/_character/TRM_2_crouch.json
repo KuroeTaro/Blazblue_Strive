@@ -18,7 +18,7 @@
 },
 "2":
 {
-	"frame": {"x":0,"y":440,"w":460,"h":440},
+	"frame": {"x":920,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -26,7 +26,7 @@
 },
 "3":
 {
-	"frame": {"x":460,"y":440,"w":460,"h":440},
+	"frame": {"x":1380,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -34,7 +34,7 @@
 },
 "4":
 {
-	"frame": {"x":0,"y":880,"w":460,"h":440},
+	"frame": {"x":1840,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -42,7 +42,7 @@
 },
 "5":
 {
-	"frame": {"x":460,"y":880,"w":460,"h":440},
+	"frame": {"x":2300,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -50,7 +50,7 @@
 },
 "6":
 {
-	"frame": {"x":0,"y":1320,"w":460,"h":440},
+	"frame": {"x":2760,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -58,7 +58,7 @@
 },
 "7":
 {
-	"frame": {"x":460,"y":1320,"w":460,"h":440},
+	"frame": {"x":3220,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -66,7 +66,7 @@
 },
 "8":
 {
-	"frame": {"x":0,"y":1760,"w":460,"h":440},
+	"frame": {"x":3680,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -74,7 +74,7 @@
 },
 "9":
 {
-	"frame": {"x":460,"y":1760,"w":460,"h":440},
+	"frame": {"x":4140,"y":0,"w":460,"h":440},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":440},
@@ -85,8 +85,8 @@
 	"version": "1.0",
 	"image": "TRM_2_crouch",
 	"format": "RGBA8888",
-	"size": {"w":920,"h":2200},
+	"size": {"w":4600,"h":440},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b8d4f6c161e2b5c949b739061b99f196:c946e9c93d27363991fce528bbdd47e1:03aeb74921c02f5ad54c303b50196659$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e40ba40b6c67896e76779d9816a4894f:d6bee4eab5a8e4a730fcaf3accf068c1:03aeb74921c02f5ad54c303b50196659$"
 }
 }

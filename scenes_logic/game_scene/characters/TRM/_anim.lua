@@ -51,9 +51,9 @@
 -- obj_char["overdrive_drain_speed"] = 24
 -- obj_char["risk"] = {0.0, 300.0}-- 0.0 - 300.0
 -- obj_char["positive_bouns"] = {0.0, 600.0} -- 0.0 - 600.0
--- obj_char["hurt_horizontal_velocity_correction"] = 1
--- obj_char["hurt_gravity_correction"] = 1
--- obj_char["hurt_damage_correction"] = 1
+-- obj_char["velocity_x_correction"] = 1
+-- obj_char["gravity_correction"] = 1
+-- obj_char["damage_correction"] = 1
 
 -- -- game_speed
 -- obj_char["game_speed"] = 1
@@ -89,7 +89,7 @@
 -- obj_char["current_hurtstop_wiggle_y_animation"] = nil
 
 
-function load_game_scene_anim_char_TRM_stand_idle(obj_char)
+function load_game_scene_anim_char_TRM_5_stand_idle(obj_char)
     local res = {}
     res[0] = function() 
         -- state
@@ -114,14 +114,15 @@ function load_game_scene_anim_char_TRM_stand_idle(obj_char)
         -- state_number
         obj_char["gravity"] = 9.8
         obj_char["friction"] = 1
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -143,7 +144,7 @@ function load_game_scene_anim_char_TRM_stand_idle(obj_char)
 
 end
 
-function load_game_scene_anim_char_TRM_6(obj_char)
+function load_game_scene_anim_char_TRM_6_walk(obj_char)
     local walk_speed = 9.0 -- 20
     local res = {}
     res[0] = function() 
@@ -170,14 +171,15 @@ function load_game_scene_anim_char_TRM_6(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         obj_char["gravity"] = 9.8
         obj_char["friction"] = 1
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{7, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -282,7 +284,7 @@ function load_game_scene_anim_char_TRM_6(obj_char)
     return res
 end
 
-function load_game_scene_anim_char_TRM_4(obj_char)
+function load_game_scene_anim_char_TRM_4_walk(obj_char)
     local walk_speed = -7.0
     local res = {}
     res[0] = function() 
@@ -309,14 +311,15 @@ function load_game_scene_anim_char_TRM_4(obj_char)
         obj_char["velocity"] = {obj_char[5]*walk_speed,0}
         obj_char["gravity"] = 9.8
         obj_char["friction"] = 1
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{-7, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -447,14 +450,15 @@ function load_game_scene_anim_char_TRM_6_walk_to_stand_idle(obj_char)
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 9.8
         obj_char["friction"] = 1
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -505,14 +509,15 @@ function load_game_scene_anim_char_TRM_4_walk_to_stand_idle(obj_char)
         obj_char["velocity"] = {0,0}
         obj_char["gravity"] = 9.8
         obj_char["friction"] = 1
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
         -- collide
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -535,7 +540,7 @@ end
 
 
 
-function load_game_scene_anim_char_TRM_overdrive(obj_char)
+function load_game_scene_anim_char_TRM_burst_overdrive_ground(obj_char)
     local res = {}
     local obj_char_other_side = common_game_scene_change_character(obj_char["player_side"])
     -- 更新hitbox table 有一个全屏的红框
@@ -561,7 +566,7 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
     end
     res[0] = function()
         -- state
-        obj_char["sprite_sheet_state"] = "burst_overdrive_RC"
+        obj_char["sprite_sheet_state"] = "burst_overdrive_rc"
         obj_char["height_state"] = "stand"
         obj_char["hit_type_state"] = "none"
         obj_char["hit_guard_type_state"] = "none" -- none all low high
@@ -614,6 +619,7 @@ function load_game_scene_anim_char_TRM_overdrive(obj_char)
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {} --{ 攻击类型 是投还是打， function值 内部为命中后的逻辑, 具体的box形状}
         obj_char["hurtbox_table"] = {}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- draw_correction
         obj_char[8] = 0
@@ -890,6 +896,7 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
         obj_char["pushbox"] = {0, -185, 130, 370}
         obj_char["hitbox_table"] = {}
         obj_char["hurtbox_table"] = {{0, -215, 170, 430},{0, -455, 100, 50}}
+        obj_char["collision_test_ground_height_offset"] = 0 
 
         -- sub_obj
         obj_char["hit_VFX_insert_function"] = insert_VFX_game_scene_char_ver0_hit_blast
@@ -998,9 +1005,9 @@ function load_game_scene_anim_char_TRM_5P(obj_char)
 
         -- state_number
         obj_char["gravity"] = 9.8
-        obj_char["hurt_horizontal_velocity_correction"] = 1
-        obj_char["hurt_gravity_correction"] = 1
-        obj_char["hurt_damage_correction"] = 1
+        obj_char["velocity_x_correction"] = 1
+        obj_char["gravity_correction"] = 1
+        obj_char["damage_correction"] = 1
 
     end
     res[19] = function() 
@@ -1142,6 +1149,8 @@ function load_game_scene_anim_char_TRM_5P_stand_hurt_high(obj_char)
         obj_char_other_side["pushbox"] = {0, -185, 130, 370}
         obj_char_other_side["hitbox_table"] = {}
         obj_char_other_side["hurtbox_table"] = hurtbox_data_other_side["stand_hurt_high"][0]
+        obj_char_other_side["collision_test_ground_height_offset"] = 0 
+        
 
         -- draw_correction
         obj_char_other_side[8] = 0

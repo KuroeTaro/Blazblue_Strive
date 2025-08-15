@@ -75,10 +75,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "TRM_stand_idle",
+	"image": "TRM_5_stand_idle",
 	"format": "RGBA8888",
 	"size": {"w":1020,"h":1620},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:4097ead33550373a039c497a7e3f2c46:053ec89c3040cf1a3379e4d7c1b2a9c1:d3f59f39545f63d04c7b53279f205bec$"
+	"smartupdate": "$TexturePacker:SmartUpdate:acd8812113f29128e45edb3641f19ecc:fc7742c3c47c1694c5ae5dba1b7042b5:7cc4a313098a7d8b44be2107dba723da$"
 }
 }
