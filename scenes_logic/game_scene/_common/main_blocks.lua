@@ -88,32 +88,47 @@ function update_game_scene_main_training()
                     anim_UI_point_linear_game_scene_timer_ease_in_opacity_0_1
                 )
 
-            elseif SCENE_TIMER < 165 then
-                state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
-                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
-            
-            elseif SCENE_TIMER == 165 then
-                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
-
-            elseif SCENE_TIMER < 175 then
-                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
-
-            elseif SCENE_TIMER == 175 then
-                obj_annoucer_game_scene_lets_dance[4] = 0
+            elseif SCENE_TIMER == 160 then
                 -- input_sys save
                 obj_char_game_scene_char_LP["input_sys_state"] = "save"
                 init_input_sys_cache(obj_char_game_scene_char_LP)
                 obj_char_game_scene_char_RP["input_sys_state"] = "save"
                 init_input_sys_cache(obj_char_game_scene_char_RP)
 
+            elseif SCENE_TIMER < 165 then
+                state_machine_automatic_player_game_scene(obj_HUD_game_scene_ease_in,50)
+                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
+            
+            elseif SCENE_TIMER == 165 then
+                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
+
+            elseif SCENE_TIMER < 175 then
+                state_machine_automatic_player_game_scene(obj_annoucer_game_scene_lets_dance,40)
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
+
+            elseif SCENE_TIMER == 175 then
+                obj_annoucer_game_scene_lets_dance[4] = 0
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
+
             elseif SCENE_TIMER < 180 then
-                -- do nothing
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
+
             elseif SCENE_TIMER == 180 then
                 SCENE_TIMER = 0
                 -- 改变char_LP RP的状态到可运行
                 obj_char_game_scene_char_LP["state"] = "stand_idle"
                 obj_char_game_scene_char_RP["state"] = "stand_idle"
                 update_flow_controller["state"] = "main"
+
+                state_machine_char_game_scene_char_LP_input_sys_cache()
+                state_machine_char_game_scene_char_RP_input_sys_cache()
 
                 common_game_scene_toggle_dynamic_HUD(1)
                 common_game_scene_toggle_ease_in(0)
