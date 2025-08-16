@@ -431,7 +431,6 @@ function update_game_scene_gravity()
     else
         char_RP["velocity"][2] = char_RP["velocity"][2] + char_RP["gravity"]*char_RP["gravity_correction"]
     end
-
 end
 
 function update_game_scene_friction()
@@ -552,7 +551,6 @@ function update_game_scene_char()
         end
     end
 
-
     -- 计算摩擦力时再将game_speed_subframe初始化
     if char_LP["game_speed"] ~= 0 
     and char_LP["game_speed_subframe"] > char_LP["game_speed"]
@@ -561,7 +559,6 @@ function update_game_scene_char()
         update_game_scene_char_LP_projectile()
         update_game_scene_char_LP_VFX()
         update_game_scene_char_LP_black_overlay()
-        -- char_LP["game_speed_subframe"] = 1
     end
 
     if char_RP["game_speed"] ~= 0 
@@ -571,6 +568,5 @@ function update_game_scene_char()
         update_game_scene_char_RP_projectile()
         update_game_scene_char_RP_VFX()
         update_game_scene_char_RP_black_overlay()
-        -- char_RP["game_speed_subframe"] = 1
     end
 end
