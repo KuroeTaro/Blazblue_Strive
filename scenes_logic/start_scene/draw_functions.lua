@@ -198,7 +198,7 @@ function draw_start_scene_sp_record_100h_plus_time_indi(obj,image)
     love.graphics.setBlendMode('alpha', 'alphamultiply')
     love.graphics.setCanvas()
 
-    love.graphics.setColor(1, 1, 1, obj[4]*0.3)
+    love.graphics.setColor(1, 1, 1, obj[4]*0.25)
     love.graphics.draw(image,x,y,0,sx,sy)
     love.graphics.setColor(1, 1, 1, 1)
 

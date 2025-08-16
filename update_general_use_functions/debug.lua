@@ -144,3 +144,46 @@ function update_character_frame_info(obj_char)
     end
 
 end
+
+
+
+function draw_debug_info_all(x_offset,y_offset)
+    draw_input_sys(x_offset,y_offset)
+    love.graphics.print( "FRAMES_DRAWN", 0+x_offset, 240+y_offset)
+    love.graphics.print( "GRAPHICIAL_FPS", 0+x_offset, 255+y_offset)
+    love.graphics.print( "SCENE_TIMER", 0+x_offset, 270+y_offset)
+    love.graphics.print( FRAMES_DRAWN, 110+x_offset, 240+y_offset)
+    love.graphics.print( FPS, 110+x_offset, 255+y_offset)
+    love.graphics.print( SCENE_TIMER, 110+x_offset, 270+y_offset)
+    -- 获取统计信息
+    local stats = love.graphics.getStats()
+    -- 显示统计信息
+    love.graphics.print("Draw Calls: " .. stats.drawcalls, 250+x_offset, 150+y_offset)
+    love.graphics.print("Canvas Switches: " .. stats.canvasswitches, 250+x_offset, 30+y_offset)
+    love.graphics.print("Texture Memory: " .. stats.texturememory / 1024 / 1024 .. " MB", 250+x_offset, 50+y_offset)
+    love.graphics.print("Images Loaded: " .. stats.images, 250+x_offset, 70+y_offset)
+
+    -- 绘制角色帧数
+    if obj_char_game_scene_char_LP and obj_char_game_scene_char_RP then
+        update_character_frame_info(obj_char_game_scene_char_LP)
+        update_character_frame_info(obj_char_game_scene_char_RP)
+        love.graphics.print("LP_current_f : " .. obj_char_game_scene_char_LP["f"], 0+x_offset, 300+y_offset)
+        love.graphics.print("LP_startup   : " .. obj_char_game_scene_char_LP["startup_frame"], 0+x_offset, 315+y_offset)
+        love.graphics.print("LP_active    : " .. obj_char_game_scene_char_LP["active_frame"], 0+x_offset, 330+y_offset)
+        love.graphics.print("LP_recovery  : " .. obj_char_game_scene_char_LP["recovery_frame"], 0+x_offset, 345+y_offset)
+        love.graphics.print("LP_frame_adv : " .. obj_char_game_scene_char_LP["frame_adv"], 0+x_offset, 360+y_offset)
+        love.graphics.print("LP_move_state: " .. obj_char_game_scene_char_LP["move_state"], 0+x_offset, 375+y_offset)
+        love.graphics.print("LP_GS_ctd	  : " .. obj_char_game_scene_char_LP["game_speed_abnormal_realtime_countdown"], 0+x_offset, 390+y_offset)
+        love.graphics.print("LP_GS		  : " .. obj_char_game_scene_char_LP["game_speed"], 0+x_offset, 405+y_offset)
+        love.graphics.print("LP_GS_sub_f  : " .. obj_char_game_scene_char_LP["game_speed_subframe"], 0+x_offset, 420+y_offset)
+        love.graphics.print("RP_current_f : " .. obj_char_game_scene_char_RP["f"], 300+x_offset, 300+y_offset)
+        love.graphics.print("RP_startup   : " .. obj_char_game_scene_char_RP["startup_frame"], 300+x_offset, 315+y_offset)
+        love.graphics.print("RP_active    : " .. obj_char_game_scene_char_RP["active_frame"], 300+x_offset, 330+y_offset)
+        love.graphics.print("RP_recovery  : " .. obj_char_game_scene_char_RP["recovery_frame"], 300+x_offset, 345+y_offset)
+        love.graphics.print("RP_frame_adv : " .. obj_char_game_scene_char_RP["frame_adv"], 300+x_offset, 360+y_offset)
+        love.graphics.print("RP_move_state: " .. obj_char_game_scene_char_RP["move_state"], 300+x_offset, 375+y_offset)
+        love.graphics.print("RP_GS_ctd	  : " .. obj_char_game_scene_char_RP["game_speed_abnormal_realtime_countdown"], 300+x_offset, 390+y_offset)
+        love.graphics.print("RP_GS		  : " .. obj_char_game_scene_char_RP["game_speed"], 300+x_offset, 405+y_offset)
+        love.graphics.print("RP_GS_sub_f  : " .. obj_char_game_scene_char_RP["game_speed_subframe"], 300+x_offset, 420+y_offset)
+    end
+end
